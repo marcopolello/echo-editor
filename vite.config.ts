@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
 import tailwind from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
-// import visualizer from 'rollup-plugin-visualizer'
+import visualizer from 'rollup-plugin-visualizer'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -18,7 +18,7 @@ export default defineConfig({
     }),
   ],
   optimizeDeps: {
-    include: ['vue'],
+    include: ['vue','zod','vee-validate','@vee-validate/zod'],
   },
   resolve: {
     alias: {
@@ -41,14 +41,7 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'EchoEditor',
     },
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
     rollupOptions: {
-      // input: path.resolve(__dirname, 'src/styles'),
       output: {
         exports: 'named',
         globals: {
@@ -57,6 +50,5 @@ export default defineConfig({
       },
       external: ['vue'],
     },
-    chunkSizeWarningLimit: 3000,
   },
 })
