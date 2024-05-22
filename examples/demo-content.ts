@@ -10,7 +10,7 @@ export const DEMO_CONTENT = {
       type: 'paragraph',
       attrs: { class: null, textAlign: 'start', indent: 0, lineHeight: null },
       content: [
-        { type: 'text', text: '一个现代的所见即所得的AI富文本编辑器基于 ' },
+        { type: 'text', text: 'Un moderno editor di testo RTF AI WYSIWYG basato su ' },
         {
           type: 'text',
           marks: [
@@ -26,7 +26,7 @@ export const DEMO_CONTENT = {
           ],
           text: 'tiptap',
         },
-        { type: 'text', text: ' 和 ' },
+        { type: 'text', text: ' e' },
         {
           type: 'text',
           marks: [

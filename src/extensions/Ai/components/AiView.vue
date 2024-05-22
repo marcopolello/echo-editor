@@ -68,7 +68,7 @@ const options: any = [
         key: 'jordan baker',
       },
       {
-        label: '中文',
+        label: 'Italiano',
         icon: 'mdi:translate',
         key: 'jordan baker',
       },
@@ -85,8 +85,8 @@ function handleMaskClick() {
   if (result.value) {
     // dialog.warning({
     //   title: '是否退出 AI 助手',
-    //   content: '确认退出后，当前生成的内容将会不会保留',
-    //   positiveText: '确认退出',
+    //   content: 'Confermare退出后，当前生成的内容将会不会保留',
+    //   positiveText: 'Confermare退出',
     //   negativeText: '取消',
     //   onPositiveClick: () => {
     //     props.deleteNode();
@@ -121,7 +121,7 @@ function handleReplace() {
   props.editor.chain().focus().setTextSelection(range).deleteSelection().insertContent(result.value).run()
 }
 function insetBottom() {
-  // 将text插入光标下方
+  // 将textinserire光标下方
   props.editor.commands.insertContent(result.value)
 }
 
@@ -141,10 +141,10 @@ function handleDelete() {
       <!-- <div class="fixed z-[100] h-full inset-0" @click="handleMaskClick"></div> -->
       <div class="z-[1001] min-h-12 w-[350px]">
         <div class="ai-modal-main-container">
-          <div class="py-2 px-4">
-            <div v-if="status === 'loading'" class="flex items-center flex-row w-full select-none">
+          <div class="px-4 py-2">
+            <div v-if="status === 'loading'" class="flex flex-row items-center w-full select-none">
               <div class="ai_modal_writing_tips_loading_wrapper" style="width: 24px">
-                <div class="flex itemscenter flex-row rounded-sm" style="width: 24px; height: 24px">
+                <div class="flex flex-row rounded-sm itemscenter" style="width: 24px; height: 24px">
                   <img
                     src="https://docs.gtimg.com/docs-design-resources/icon/desktop/png@3x/ai-assistant_fill_motion_loop_24@3x-00b564ad53.png"
                     width="24"
@@ -154,13 +154,13 @@ function handleDelete() {
                 </div>
               </div>
               <div class="text-sm px-1 py-2 flex-grow-[1]">智能助手创作中...</div>
-              <div class="flex flex-col justify-center items-center">
+              <div class="flex flex-col items-center justify-center">
                 <Button size="sm" secondary @click="handleStop">停止</Button>
               </div>
             </div>
             <div class="w-full overflow-hidden px-0.5 flex flex-row" v-if="status === 'idle'">
               <div class="w-6">
-                <div class="flex itemscenter flex-row rounded-sm w-6 h-6">
+                <div class="flex flex-row w-6 h-6 rounded-sm itemscenter">
                   <img
                     src="https://docs.gtimg.com/docs-design-resources/icon/desktop/png@3x/ai-assistant_fill_motion_once_24@3x-23803ec719.png"
                     width="24"
@@ -174,9 +174,9 @@ function handleDelete() {
                 contenteditable="true"
                 ref="inputRef"
                 spellcheck="false"
-                placeholder="让智能助手帮我..."
+                placeholder="Lascia che l'assistente intelligente mi aiuti..."
               />
-              <div class="min-w-6 flex flex-col-reverse">
+              <div class="flex flex-col-reverse min-w-6">
                 <div
                   class="dui-trigger dui-tooltip dui-tooltip-wrapper"
                   data-dui-1-3-5="dui-trigger dui-tooltip dui-tooltip-wrapper"
@@ -189,15 +189,15 @@ function handleDelete() {
               </div>
             </div>
             <div v-if="status === 'generating' || status === 'completed'" class="select-none">
-              <div class="flex justify-between flex-row px-1 text-xs h-8 text-gray-500 dark:text-gray-100">
-                <div>生成结果</div>
+              <div class="flex flex-row justify-between h-8 px-1 text-xs text-gray-500 dark:text-gray-100">
+                <div>Genera risultati</div>
                 <div>
                   <Button variant="ghost" size="sm">
                     <Icon @click="handleDelete" style="width: 22px; height: 22px" icon="mdi:close" />
                   </Button>
                 </div>
               </div>
-              <div class="ai_modal_message_board select-none">
+              <div class="select-none ai_modal_message_board">
                 {{ result }}
               </div>
               <AiCompletion :editor="editor" :completion="result" />

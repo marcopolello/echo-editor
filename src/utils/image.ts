@@ -11,8 +11,8 @@ export type ImageNodeAttributes = {
 }
 
 /**
- * 将给定的图像数组插入到 Tiptap 编辑器文档内容中。
- * 可选地指定要将图像插入到编辑器内容中的给定位置。如果未给出，则将新插入的图像替换用户当前的选择（如果有）。
+ * 将给定的图像数组inserire到 Tiptap 编辑器文档内容中。
+ * 可选地指定要将图像inserire到编辑器内容中的给定位置。如果未给出，则将新inserire的图像sostituire用户当前的选择（如果有）。
  *
  * @param options.images The attributes of each image to insert
  * @param options.editor The Tiptap editor in which to insert
@@ -43,7 +43,7 @@ export function insertImages({
     .chain()
     .command(({ commands }) => {
       if (position == null) {
-        //将在用户当前的选择位置插入并替换
+        //将在用户当前的选择位置inserire并sostituire
         return commands.insertContent(imageContentToInsert)
       } else {
         return commands.insertContentAt(position, imageContentToInsert)

@@ -25,7 +25,7 @@ export type PainterAction = {
   marks: Mark[]
 }
 /**
- * 格式刷
+ * Formato刷
  */
 export const FormatPainter = Extension.create<FormatPainterOptions>({
   name: 'painter',

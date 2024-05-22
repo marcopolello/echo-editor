@@ -6,27 +6,27 @@ interface ServiceType {
   icon: keyof typeof icons
 }
 export const VideoServices: ServiceType[] = [
-  { label: '优酷', value: 'youku', icon: 'Youku' },
+  { label: 'Youku', value: 'youku', icon: 'Youku' },
   {
-    label: '哔哩哔哩',
+    label: 'bilibili',
     value: 'bilibili',
     icon: 'BiliBili',
   },
   {
-    label: '腾讯视频',
+    label: 'qqvideo',
     value: 'qqvideo',
     icon: 'QQVideo',
   },
 ]
 
 export const MapServices: ServiceType[] = [
-  { label: '高德地图', value: 'amap', icon: 'Gaode' },
-  { label: '百度地图', value: 'baidu_map', icon: 'Baidu' },
+  { label: 'amap', value: 'amap', icon: 'Gaode' },
+  { label: 'baidu_map', value: 'baidu_map', icon: 'Baidu' },
 ]
 
 export const DesignServices: ServiceType[] = [
-  { label: '墨刀', value: 'modao', icon: 'Modao' },
-  { label: '蓝湖', value: 'lanhu', icon: 'Lanhu' },
+  { label: 'modao', value: 'modao', icon: 'Modao' },
+  { label: 'lanhu', value: 'lanhu', icon: 'Lanhu' },
   { label: 'Figma', value: 'figma', icon: 'Figma' },
   { label: 'Canva', value: 'canva', icon: 'Canva' },
   { label: 'ProcessOn', value: 'processon', icon: 'Processon' },
@@ -34,7 +34,7 @@ export const DesignServices: ServiceType[] = [
 
 export const DevelopServices: ServiceType[] = [{ label: 'CodePen', value: 'codepen', icon: 'Codepen' }]
 
-export const DataServices: ServiceType[] = [{ label: '金数据', value: 'jinshuju', icon: 'Jinshuju' }]
+export const DataServices: ServiceType[] = [{ label: 'jinshuju', value: 'jinshuju', icon: 'Jinshuju' }]
 
 export const OtherServices = []
 

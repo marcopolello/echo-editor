@@ -92,7 +92,7 @@ const Selection = computed(() => {
       />
       <ActionButton
         v-if="isTableSelected(props.editor.state.selection)"
-        tooltip="删除表格"
+        tooltip="eliminare表格"
         icon="Trash2"
         :action="() => emits('onDeleteTable')"
         :tooltip-options="{

@@ -23,7 +23,7 @@ const { t } = useLocale()
 const formSchema = toTypedSchema(
   z.object({
     text: z.string({ message: '请输入文本' }),
-    link: z.string({ message: '请输入链接' }).url({ message: '链接格式不正确' }),
+    link: z.string({ message: '请Inserisci il collegamento' }).url({ message: '链接Formato不正确' }),
     openInNewTab: z.boolean().default(true).optional(),
   })
 )
@@ -58,7 +58,7 @@ const onSubmit = handleSubmit(values => {
           <FormControl>
             <div class="flex w-full max-w-sm items-center gap-1.5">
               <div class="relative w-full max-w-sm items-center">
-                <Input v-bind="componentField" type="text" class="w-80" placeholder="输入链接" />
+                <Input v-bind="componentField" type="text" class="w-80" placeholder="Inserisci il collegamento" />
               </div>
             </div>
           </FormControl>
@@ -71,7 +71,7 @@ const onSubmit = handleSubmit(values => {
           <FormControl>
             <div class="flex w-full max-w-sm items-center gap-1.5">
               <div class="relative w-full max-w-sm items-center">
-                <Input v-bind="componentField" type="text" placeholder="输入链接" class="pl-10" />
+                <Input v-bind="componentField" type="text" placeholder="Inserisci il collegamento" class="pl-10" />
                 <span class="absolute start-0 inset-y-0 flex items-center justify-center px-2">
                   <Icon class="size-6 text-muted-foreground" name="Link" />
                 </span>

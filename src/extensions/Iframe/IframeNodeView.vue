@@ -39,16 +39,16 @@ onMounted(() => {
 
 <template>
   <NodeViewWrapper as="section">
-    <div class="flex flex-row relative items-center" v-if="!src">
-      <Input v-model:model-value="originalLink" type="url" class="h-12 pr-40" autofocus placeholder="输入链接"> </Input>
-      <div class="flex gap-2 absolute right-1 w-36">
-        <Button @click="handleExmaple" variant="outline">示例</Button>
-        <Button type="primary" @click="handleConfirm">确认</Button>
+    <div class="relative flex flex-row items-center" v-if="!src">
+      <Input v-model:model-value="originalLink" type="url" class="h-12 pr-40" autofocus placeholder="Inserisci il collegamento"> </Input>
+      <div class="absolute flex gap-2 right-1 w-36">
+        <Button @click="handleExmaple" variant="outline">Esempio</Button>
+        <Button type="primary" @click="handleConfirm">Confermare</Button>
       </div>
     </div>
     <iframe
       v-if="src"
-      class="w-full border border-border mt-2 rounded-sm"
+      class="w-full mt-2 border rounded-sm border-border"
       :src="src"
       frameborder="0"
       allowfullscreen="true"

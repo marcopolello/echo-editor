@@ -40,20 +40,20 @@ function handleInsert() {
 </script>
 
 <template>
-  <div class="dark:bg-black text-black overflow-auto flex-wrap p-1">
+  <div class="flex-wrap p-1 overflow-auto text-black dark:bg-black">
     <Separator />
     <div class="flex flex-row gap-3 mt-3">
       <Button @click="handleReplace" size="sm">
         <Icon name="Replace" />
-        替换
+        sostituire
       </Button>
       <Button @click="handleInsert" size="sm">
         <Icon name="TextQuote" />
-        插入
+        inserire
       </Button>
       <Button @click="emits('discard')" size="sm">
         <Icon name="Trash" />
-        丢弃
+        Buttar via
       </Button>
     </div>
   </div>

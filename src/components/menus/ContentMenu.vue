@@ -199,35 +199,35 @@ watch(
             class="flex gap-3 focus:text-red-500 focus:bg-red-400 hover:bg-red-400 dark:hover:text-red-500 bg-opacity-10 hover:bg-opacity-20 focus:bg-opacity-30 dark:hover:bg-opacity-20"
           >
             <Icon name="Trash2" />
-            <span>删除</span>
+            <span>eliminare</span>
           </DropdownMenuItem>
           <DropdownMenuItem class="flex gap-3" @click="resetTextFormatting">
             <Icon name="PaintRoller" />
-            <span>清除文本格式</span>
+            <span>testo chiaroFormato</span>
           </DropdownMenuItem>
           <DropdownMenuItem class="flex gap-3" @click="copyNodeToClipboard">
             <Icon name="Clipboard" />
-            <span>复制到剪切板</span>
+            <span>Copia negli appunti</span>
           </DropdownMenuItem>
           <DropdownMenuItem class="flex gap-3" @click="duplicateNode">
             <Icon name="Copy" />
-            <span>复制</span>
+            <span>copia</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuSub>
             <DropdownMenuSubTrigger class="flex gap-3">
               <Icon name="IndentIncrease" />
-              <span>缩进</span>
+              <span>rientranza</span>
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
                 <DropdownMenuItem class="flex gap-3" @click="increaseIndent">
                   <Icon name="IndentIncrease" />
-                  <span>增加缩进</span>
+                  <span>增加rientranza</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem class="flex gap-3" @click="decreaseIndent">
                   <Icon name="IndentDecrease" />
-                  <span>减少缩进</span>
+                  <span>减少rientranza</span>
                 </DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>

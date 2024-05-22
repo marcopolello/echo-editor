@@ -88,7 +88,7 @@ function onDeleteColumn() {
       <ActionButton
         icon="BetweenHorizonalEnd"
         :action="onAddColumnBefore"
-        tooltip="向前插入列"
+        tooltip="向前inserire列"
         :tooltip-options="{
           sideOffset: 15,
         }"
@@ -96,7 +96,7 @@ function onDeleteColumn() {
       <ActionButton
         icon="BetweenHorizonalStart"
         :action="onAddColumnAfter"
-        tooltip="向后插入列"
+        tooltip="向后inserire列"
         :tooltip-options="{
           sideOffset: 15,
         }"
@@ -105,7 +105,7 @@ function onDeleteColumn() {
       <ActionButton
         icon="Trash2"
         :action="onDeleteColumn"
-        tooltip="删除列"
+        tooltip="eliminare列"
         :tooltip-options="{
           sideOffset: 15,
         }"

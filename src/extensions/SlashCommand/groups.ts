@@ -8,7 +8,7 @@ const { t } = useLocale()
 export const GROUPS: Group[] = [
   {
     name: 'format',
-    title: '格式',
+    title: 'Formato',
     commands: [
       {
         name: 'heading1',
@@ -69,7 +69,7 @@ export const GROUPS: Group[] = [
       {
         name: 'blockquote',
         label: t.value('editor.blockquote.tooltip'),
-        description: '插入引入格式',
+        description: 'inserire引入Formato',
         aliases: ['yr'],
         iconName: 'TextQuote',
         action: ({ editor, range }) => {
@@ -90,7 +90,7 @@ export const GROUPS: Group[] = [
   },
   {
     name: 'insert',
-    title: '插入',
+    title: 'inserire',
     commands: [
       {
         name: 'table',
@@ -115,7 +115,7 @@ export const GROUPS: Group[] = [
       },
       {
         name: 'columns',
-        label: '分栏',
+        label: 'colonne',
         iconName: 'Columns2',
         description: 'Add two column content',
         aliases: ['columns', 'cols', '2cols'],
@@ -144,7 +144,7 @@ export function renderGroups(editor: Editor) {
       commands: [
         {
           name: 'aiWriter',
-          label: 'AI智能助手',
+          label: 'Assistente intelligente AI',
           iconName: 'Sparkles',
           description: 'Let AI finish your thoughts',
           shouldBeHidden: editor => editor.isActive('columns'),
@@ -159,7 +159,7 @@ export function renderGroups(editor: Editor) {
     const services = AllEmbedServices
     groups.push({
       name: 'others',
-      title: '嵌入第三方服务',
+      title: 'ncorpora servizi di terze parti',
       commands: services.map(item => ({
         name: item.value,
         label: item.label,

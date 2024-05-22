@@ -86,7 +86,7 @@ function onDeleteRow() {
       <ActionButton
         icon="BetweenVerticalStart"
         :action="onAddRowBefore"
-        tooltip="向上插入列"
+        tooltip="向上inserire列"
         :tooltip-options="{
           sideOffset: 15,
           side: 'right',
@@ -96,7 +96,7 @@ function onDeleteRow() {
       <ActionButton
         icon="BetweenVerticalEnd"
         :action="onAddRowAfter"
-        tooltip="向下插入列"
+        tooltip="向下inserire列"
         :tooltip-options="{
           side: 'right',
           sideOffset: 15,
@@ -109,7 +109,7 @@ function onDeleteRow() {
           side: 'right',
           sideOffset: 15,
         }"
-        tooltip="删除行"
+        tooltip="eliminare行"
       />
       <ActionButton
         v-if="Selection?.cellCount! > 1"

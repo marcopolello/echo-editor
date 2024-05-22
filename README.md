@@ -6,7 +6,7 @@ A modern WYSIWYG rich-text editor base on [tiptap](https://tiptap.dev) uses [sha
 [![](https://img.shields.io/npm/v/echo-editor.svg?label=version)](https://www.npmjs.com/package/echo-editor)
 [![](https://img.shields.io/npm/dependency-version/echo-editor/peer/vue?color=vue)](https://www.npmjs.com/package/echo-editor)
 
-English | [中文](./README.zh-CN.md)
+English | [Italiano](./README.zh-CN.md)
 
 ## Demo
 

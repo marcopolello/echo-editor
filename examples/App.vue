@@ -11,8 +11,8 @@
     "
   >
     <div class="flex gap-32">
-      <button ghost @click="locale.setLang('zhHans')">中文</button>
-      <button ghost @click="locale.setLang('en')">英文</button>
+      <button ghost @click="locale.setLang('zhHans')">Italiano</button>
+      <button ghost @click="locale.setLang('en')">Inglese</button>
       <button ghost @click="theme = 'dark'">dark</button>
       <button ghost @click="theme = null">light</button>
     </div>
@@ -133,7 +133,7 @@ const extensions = [
   }),
 ]
 async function AICompletions(text?: string) {
-  // 从.env中获取key 请自行替换
+  // 从.env中获取key 请自行sostituire
   // @ts-ignore
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY
   if (!apiKey) {
