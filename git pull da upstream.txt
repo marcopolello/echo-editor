@@ -1,0 +1,2 @@
+Una volta che hai configurato il remoto upstream, puoi eseguire il comando git fetch upstream per scaricare tutte le modifiche dal progetto principale.
+Infine, esegui il comando git pull upstream <nome_branch> per aggiornare il tuo fork locale con le modifiche dal progetto principale. Sostituisci <nome_branch> con il nome della branch che desideri aggiornare.
