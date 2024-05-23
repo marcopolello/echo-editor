@@ -66,6 +66,7 @@ export const icons = {
   Canva: 'echo-canva',
   Processon: 'echo-processon',
   Codepen: 'echo-codepen',
+  Youtube: 'echo-youtube',
   PanelLeft: 'lucide:panel-left',
   PanelRight: 'lucide:panel-right',
   Columns: 'lucide:columns',

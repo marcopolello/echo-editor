@@ -6,6 +6,7 @@ interface ServiceType {
   icon: keyof typeof icons
 }
 export const VideoServices: ServiceType[] = [
+  {label: 'Youtube', value: 'youtube', icon: 'Youtube'},
   //{ label: 'Youku', value: 'youku', icon: 'Youku' },
   //{
   //  label: 'bilibili',
@@ -32,7 +33,7 @@ export const DesignServices: ServiceType[] = [
   //{ label: 'ProcessOn', value: 'processon', icon: 'Processon' },
 ]
 
-//export const DevelopServices: ServiceType[] = [{ label: 'CodePen', value: 'codepen', icon: 'Codepen' }]
+export const DevelopServices: ServiceType[] = [{ label: 'CodePen', value: 'codepen', icon: 'Codepen' }]
 
 //export const DataServices: ServiceType[] = [{ label: 'jinshuju', value: 'jinshuju', icon: 'Jinshuju' }]
 
@@ -42,7 +43,7 @@ export const AllEmbedServices = [
   ...VideoServices,
   ...MapServices,
   ...DesignServices,
-  //...DevelopServices,
+  ...DevelopServices,
   //...DataServices,
   ...OtherServices,
 ]
@@ -60,7 +61,7 @@ export const getEmbedService = value => {
 /**
  * Embed service link
  * @id source id
- * @exmplae example link
+ * @example example link
  * @src source src, used in iframe
  */
 export const EmbedServiceLink = {
@@ -88,18 +89,6 @@ export const EmbedServiceLink = {
     srcPrefix: '',
     linkRule: ['https:\\/\\/codepen.io\\/.+\\/embed\\/\\w+'],
   },
-  //jinshuju: {
-  //  example: 'https://jinshuju.net/f/q9YvVf',
-  //  src: 'https://jinshuju.net/f/q9YvVf',
-  //  srcPrefix: '',
-  //  linkRule: ['https:\\/\\/jinshuju.net\\/f\\/\\w+'],
-  //},
-  //iframe: {
-  //  example: 'https://v.youku.com/v_show/id_XNDM0NDM4MTcy.html',
-  //  src: 'https://player.youku.com/embed/XNDM0NDM4MTcy',
-  //  srcPrefix: '',
-  //  linkRule: ['.+'],
-  //},
 }
 
 function getYoutubeSrc(originalLink, result) {
@@ -112,56 +101,6 @@ function getYoutubeSrc(originalLink, result) {
   if (len > 0) {
     let id = splits[len - 1]
     result.src = `${link.srcPrefix}/${id}`
-    result.validId = true
-  }
-
-  return result
-}
-
-function getYoukuSrc(originalLink, result) {
-  //let link = EmbedServiceLink.youku
-  let url = result.matchedUrl
-
-  //let idRule = link.idRule
-  //let regex = new RegExp(idRule)
-  //let match = url.match(regex)
-  //if (match && match.length > 0) {
-  //  let id = match[0].substr(3)
-  //  result.validId = true
-  //  //result.src = `${link.srcPrefix}/${id}`
-  //} else {
-  //  result.validId = false
-  //}
-
-  result.validId = false
-
-  return result
-}
-
-//function getBilibiliSrc(originalLink, result) {
-//  //let link = EmbedServiceLink.bilibili
-//  let url = result.matchedUrl
-//
-//  let splits = url.split('/')
-//  let len = splits.length
-//  if (len > 0) {
-//    let id = splits[len - 1]
-//    //result.src = `${link.srcPrefix}=${id}`
-//    result.validId = true
-//  }
-//
-//  return result
-//}
-
-function getQQVideoSrc(originalLink, result) {
-  //let link = EmbedServiceLink.qqvideo
-  let url = result.matchedUrl
-
-  let splits = url.split('/')
-  let len = splits.length
-  if (len > 0) {
-    let id = splits[len - 1]
-    //result.src = `${link.srcPrefix}=${id}`
     result.validId = true
   }
 
@@ -190,22 +129,6 @@ function getGoogleMapSrc(originalLink, result) {
   return result
 }
 
-function getModaoSrc(originalLink, result) {
-  result.src = result.matchedUrl
-  result.validId = true
-  result.originalLink = result.src
-
-  return result
-}
-
-function getLanhuSrc(originalLink, result) {
-  result.src = result.matchedUrl
-  result.validId = true
-  result.originalLink = result.src
-
-  return result
-}
-
 function getFigmaSrc(originalLink, result) {
   let link = EmbedServiceLink.figma
   result.src = `${link.srcPrefix}=${encodeURIComponent(result.matchedUrl)}`
@@ -217,14 +140,6 @@ function getFigmaSrc(originalLink, result) {
 
 function getCanvaSrc(originalLink, result) {
   result.src = `${result.matchedUrl}?embed`
-  result.validId = true
-  result.originalLink = originalLink
-
-  return result
-}
-
-function getProcessonSrc(originalLink, result) {
-  result.src = `${result.matchedUrl}`
   result.validId = true
   result.originalLink = originalLink
 
@@ -301,32 +216,14 @@ export const getServiceSrc = (service, originalLink) => {
   switch (service) {
     case 'youtube':
       return getYoutubeSrc(originalLink, result)
-    //case 'youku':
-      //return getYoukuSrc(originalLink, result)
-    //case 'bilibili':
-      //return getBilibiliSrc(originalLink, result)
-    //case 'qqvideo':
-      //return getQQVideoSrc(originalLink, result)
-    //case 'amap':
-      //return getAMapSrc(originalLink, result)
-    //case 'baidu_map':
-      //return getBaiduMapSrc(originalLink, result)
     case 'google_map':
       return getGoogleMapSrc(originalLink, result)
-    //case 'modao':
-      //return getModaoSrc(originalLink, result)
-    //case 'lanhu':
-      //return getLanhuSrc(originalLink, result)
     case 'figma':
       return getFigmaSrc(originalLink, result)
     case 'canva':
       return getCanvaSrc(originalLink, result)
-    //case 'processon':
-      //return getProcessonSrc(originalLink, result)
     case 'codepen':
       return getCodepenSrc(originalLink, result)
-    //case 'jinshuju':
-      //return getJinshujuSrc(originalLink, result)
     case 'iframe':
       return getCommonSrc(originalLink, result)
   }
