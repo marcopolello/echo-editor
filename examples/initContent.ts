@@ -63,7 +63,7 @@ export const DEMO_CONTENT = {
           marks: [
             { type: 'link', attrs: { href: '', target: '_blank', rel: 'noopener noreferrer nofollow', class: null } },
           ],
-          text: 'comming soon',
+          text: 'coming soon',
         },
       ],
     },

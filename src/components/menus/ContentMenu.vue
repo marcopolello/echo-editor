@@ -223,11 +223,11 @@ watch(
               <DropdownMenuSubContent>
                 <DropdownMenuItem class="flex gap-3" @click="increaseIndent">
                   <Icon name="IndentIncrease" />
-                  <span>增加rientranza</span>
+                  <span>Aumento</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem class="flex gap-3" @click="decreaseIndent">
                   <Icon name="IndentDecrease" />
-                  <span>减少rientranza</span>
+                  <span>Riduzzione</span>
                 </DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>

@@ -48,7 +48,7 @@ watchEffect(() => {
       <template #icon>
         <span class="text-sm flex items-center justify-center"
           ><svg width="18px" height="18px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <g id="icon/填充色" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="icon/colore di riempimento" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
               <g id="icon/背景颜色">
                 <g id="编组" fill="currentColor">
                   <g
