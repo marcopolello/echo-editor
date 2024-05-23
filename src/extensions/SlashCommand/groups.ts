@@ -69,7 +69,7 @@ export const GROUPS: Group[] = [
       {
         name: 'blockquote',
         label: t.value('editor.blockquote.tooltip'),
-        description: 'inserire引入Formato',
+        description: 'inserireintrodurreFormato',
         aliases: ['yr'],
         iconName: 'TextQuote',
         action: ({ editor, range }) => {

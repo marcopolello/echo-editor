@@ -73,7 +73,7 @@ const Selection = computed(() => {
     <div class="flex flex-row h-full leading-none gap-0.5 p-2 bg-background rounded-lg shadow-sm border border-border">
       <ActionButton
         v-if="Selection?.cellCount! > 1"
-        tooltip="合并单元格"
+        tooltip="unisci celle"
         icon="TableCellsMerge"
         :action="() => emits('onMergeCell')"
         :tooltip-options="{
@@ -92,7 +92,7 @@ const Selection = computed(() => {
       />
       <ActionButton
         v-if="isTableSelected(props.editor.state.selection)"
-        tooltip="eliminare表格"
+        tooltip="eliminarefoglio"
         icon="Trash2"
         :action="() => emits('onDeleteTable')"
         :tooltip-options="{
@@ -102,7 +102,7 @@ const Selection = computed(() => {
 
       <HighlightActionButton
         :editor="editor"
-        tooltip="设置单元格背景色"
+        tooltip="colore background"
         :action="color => emits('setCellBackground', color as string)"
         :tooltip-options="{
           sideOffset: 15,

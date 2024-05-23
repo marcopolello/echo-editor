@@ -15,55 +15,55 @@ const inputRef = ref()
 
 const options: any = [
   {
-    label: 'AI续写',
+    label: 'continua a scrivere',
     icon: 'mdi:magic',
     key: 'jay gatsby',
   },
   {
-    label: 'AI润色',
+    label: 'ai polacco',
     icon: 'mdi:magic-staff',
     key: 'runse',
     children: [
       {
-        label: '更加详细',
+        label: 'dettagli',
         icon: 'mdi:magic-staff',
 
         key: 'xiangxi',
       },
       {
         icon: 'mdi:magic-staff',
-        label: '更加精简',
+        label: 'snello',
         key: 'jingjian',
       },
       {
         icon: 'mdi:magic-staff',
-        label: '更加正式',
+        label: 'formale',
         key: 'zhengshi',
       },
       {
-        label: '更加连贯',
+        label: 'coerente',
         icon: 'mdi:magic-staff',
         key: 'lianguan',
       },
       {
         icon: 'mdi:magic-staff',
-        label: '更加生动',
+        label: 'vivido',
         key: 'shengdong',
       },
     ],
   },
   {
-    label: 'AI校阅',
+    label: 'AI',
     key: 'jiaoyue',
     icon: 'mdi:file-document-box-search-outline',
   },
   {
-    label: 'AI翻译',
+    label: 'AI',
     icon: 'mdi:translate',
     key: 'nick carraway',
     children: [
       {
-        label: '英语',
+        label: 'Inglese',
         icon: 'mdi:translate',
         key: 'jordan baker',
       },
@@ -83,15 +83,6 @@ onMounted(() => {
 
 function handleMaskClick() {
   if (result.value) {
-    // dialog.warning({
-    //   title: '是否退出 AI 助手',
-    //   content: 'Confermare退出后，当前生成的内容将会不会保留',
-    //   positiveText: 'Confermare退出',
-    //   negativeText: '取消',
-    //   onPositiveClick: () => {
-    //     props.deleteNode();
-    //   },
-    // });
   } else {
     props.deleteNode()
   }
@@ -121,7 +112,6 @@ function handleReplace() {
   props.editor.chain().focus().setTextSelection(range).deleteSelection().insertContent(result.value).run()
 }
 function insetBottom() {
-  // 将textinserire光标下方
   props.editor.commands.insertContent(result.value)
 }
 
@@ -153,9 +143,9 @@ function handleDelete() {
                   />
                 </div>
               </div>
-              <div class="text-sm px-1 py-2 flex-grow-[1]">智能助手创作中...</div>
+              <div class="text-sm px-1 py-2 flex-grow-[1]">È in fase di creazione un assistente intelligente...</div>
               <div class="flex flex-col items-center justify-center">
-                <Button size="sm" secondary @click="handleStop">停止</Button>
+                <Button size="sm" secondary @click="handleStop">fermare</Button>
               </div>
             </div>
             <div class="w-full overflow-hidden px-0.5 flex flex-row" v-if="status === 'idle'">

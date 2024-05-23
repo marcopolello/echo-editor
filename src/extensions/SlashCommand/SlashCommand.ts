@@ -46,7 +46,7 @@ export const SlashCommand = Extension.create({
           const isRootDepth = $from.depth === 1
           const isParagraph = $from.parent.type.name === 'paragraph'
           const isStartOfNode = $from.parent.textContent?.charAt(0) === '/'
-          // TODO 行列内
+          // TODO 行elenco内
           const isInColumn = this.editor.isActive('column')
           const afterContent = $from.parent.textContent?.substring($from.parent.textContent?.indexOf('/'))
           const isValidAfterContent = !afterContent?.endsWith('  ')

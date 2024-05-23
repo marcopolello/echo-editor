@@ -88,7 +88,7 @@ function onDeleteColumn() {
       <ActionButton
         icon="BetweenHorizonalEnd"
         :action="onAddColumnBefore"
-        tooltip="向前inserire列"
+        tooltip="inoltrareinserireelenco"
         :tooltip-options="{
           sideOffset: 15,
         }"
@@ -96,7 +96,7 @@ function onDeleteColumn() {
       <ActionButton
         icon="BetweenHorizonalStart"
         :action="onAddColumnAfter"
-        tooltip="向后inserire列"
+        tooltip="indietroinserireelenco"
         :tooltip-options="{
           sideOffset: 15,
         }"
@@ -105,7 +105,7 @@ function onDeleteColumn() {
       <ActionButton
         icon="Trash2"
         :action="onDeleteColumn"
-        tooltip="eliminare列"
+        tooltip="eliminareelenco"
         :tooltip-options="{
           sideOffset: 15,
         }"
@@ -114,7 +114,7 @@ function onDeleteColumn() {
         v-if="Selection?.cellCount! > 1"
         icon="TableCellsMerge"
         :action="() => emits('onMergeCell')"
-        tooltip="合并单元格"
+        tooltip="unisci celle"
         :tooltip-options="{
           sideOffset: 15,
         }"
@@ -130,7 +130,7 @@ function onDeleteColumn() {
       />
       <HighlightActionButton
         :editor="editor"
-        tooltip="设置单元格背景色"
+        tooltip="colore background"
         :action="color => emits('setCellBackground', color as string)"
         :tooltip-options="{
           sideOffset: 15,

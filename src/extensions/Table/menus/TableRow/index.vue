@@ -86,7 +86,7 @@ function onDeleteRow() {
       <ActionButton
         icon="BetweenVerticalStart"
         :action="onAddRowBefore"
-        tooltip="向上inserire列"
+        tooltip="suinserireelenco"
         :tooltip-options="{
           sideOffset: 15,
           side: 'right',
@@ -96,7 +96,7 @@ function onDeleteRow() {
       <ActionButton
         icon="BetweenVerticalEnd"
         :action="onAddRowAfter"
-        tooltip="向下inserire列"
+        tooltip="giùinserireelenco"
         :tooltip-options="{
           side: 'right',
           sideOffset: 15,
@@ -115,7 +115,7 @@ function onDeleteRow() {
         v-if="Selection?.cellCount! > 1"
         icon="TableCellsMerge"
         :action="() => emits('onMergeCell')"
-        tooltip="合并单元格"
+        tooltip="unisci celle"
         :tooltip-options="{
           side: 'right',
           sideOffset: 15,
@@ -134,7 +134,7 @@ function onDeleteRow() {
 
       <HighlightActionButton
         :editor="editor"
-        tooltip="设置单元格背景色"
+        tooltip="colore background"
         :action="color => emits('setCellBackground', color as string)"
         :tooltip-options="{
           side: 'right',
