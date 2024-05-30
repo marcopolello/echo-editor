@@ -83,7 +83,7 @@ const Selection = computed(() => {
 
       <ActionButton
         v-if="Selection?.mergedCellCount! > 0"
-        tooltip="拆分单元格"
+        tooltip="Cella divisa"
         icon="TableCellsSplit"
         :action="() => emits('onSplitCell')"
         :tooltip-options="{

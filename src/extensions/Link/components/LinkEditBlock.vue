@@ -43,7 +43,7 @@ function handleSubmit() {
       <Label> {{ t('editor.link.dialog.text') }} </Label>
       <div class="flex w-full max-w-sm items-center gap-1.5">
         <div class="relative items-center w-full max-w-sm">
-          <Input type="text" v-model="form.text" required class="w-80" placeholder="输入文本" />
+          <Input type="text" v-model="form.text" required class="w-80" placeholder="Testo di input" />
         </div>
       </div>
       <Label>{{ t('editor.link.dialog.link') }}</Label>

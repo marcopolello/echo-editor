@@ -123,7 +123,7 @@ function onDeleteColumn() {
         v-if="Selection?.mergedCellCount! > 0"
         icon="TableCellsSplit"
         :action="() => emits('onSplitCell')"
-        tooltip="拆分单元格"
+        tooltip="Cella divisa"
         :tooltip-options="{
           sideOffset: 15,
         }"

@@ -109,7 +109,7 @@ function onDeleteRow() {
           side: 'right',
           sideOffset: 15,
         }"
-        tooltip="eliminare行"
+        tooltip="eliminareOK"
       />
       <ActionButton
         v-if="Selection?.cellCount! > 1"
@@ -125,7 +125,7 @@ function onDeleteRow() {
         v-if="Selection?.mergedCellCount! > 0"
         icon="TableCellsSplit"
         :action="() => emits('onSplitCell')"
-        tooltip="拆分单元格"
+        tooltip="Cella divisa"
         :tooltip-options="{
           side: 'right',
           sideOffset: 15,

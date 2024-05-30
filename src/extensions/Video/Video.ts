@@ -64,14 +64,6 @@ function linkConvert(src: string) {
   // Convert vimeo links
   src = src.replace('https://vimeo.com/', 'https://player.vimeo.com/video/')
 
-  // Convert bilibili links
-  const isBilibiliLink = /^https?:\/\/www.bilibili.com\/video\/.*/i.test(src)
-  if (isBilibiliLink) {
-    src = src
-      .replace(/\?.*$/i, '')
-      .replace('https://www.bilibili.com/video/', 'https://player.bilibili.com/player.html?bvid=')
-  }
-
   // Convert google drive links
   if (src.includes('drive.google.com')) {
     src = src.replace('/view', '/preview')

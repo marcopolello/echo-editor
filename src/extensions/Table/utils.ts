@@ -305,15 +305,15 @@ export const isTableCellSelected = ({
   const gripRow = container && container.querySelector && container.querySelector('a.grip-row.selected')
   if (gripRow) return false
 
-  // 获取选择的单元格数量
+  // Ottieni il numero di celle che scegli
   const selection = state.selection
   if (selection instanceof CellSelection) {
-    // 如果是CellSelection，则选择了单元格
+    // Se è cellulare, scegli la cella
     let cellCount = 0
     selection.forEachCell(cell => {
       cellCount++
     })
-    // 返回true如果选择的单元格数量大于1
+    // Restituire true se il numero di celle selezionate è maggiore di 1
     return cellCount > 0
   }
 
