@@ -11,7 +11,7 @@
     "
   >
     <div style="display: flex; gap: 12px">
-      <button ghost @click="locale.setLang('zhHans')">Italiano</button>
+      <button ghost @click="locale.setLang('it')">Italiano</button>
       <button ghost @click="locale.setLang('en')">English</button>
       <button ghost @click="theme = 'dark'">dark</button>
       <button ghost @click="theme = null">light</button>

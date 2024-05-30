@@ -19,7 +19,7 @@ English | [Italiano](./README.zh-CN.md)
 - Use [shadcn-vue](https://www.shadcn-vue.com/) components
 - Markdown support
 - TypeScript support
-- I18n support(`en`, `zhHans`)
+- I18n support(`en`, `it`)
 - Create your own extensions
 - Tailwind CSS support
 

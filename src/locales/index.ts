@@ -1,6 +1,6 @@
 import { computed, ref, unref, watchEffect } from 'vue'
 
-import zhHans from './locales/zh'
+import it from './locales/it'
 import en from './locales/en'
 
 import { DEFAULT_LANG_VALUE } from '@/constants'
@@ -18,7 +18,7 @@ interface MittEvents extends Record<EventType, unknown> {
 export const DEFAULT_LOCALE: LocaleInterface = {
   lang: DEFAULT_LANG_VALUE,
   message: {
-    zhHans,
+    it,
     en,
   },
 }
@@ -117,4 +117,4 @@ const useLocale = () => {
 }
 
 export default locale
-export { Locale, useLocale, zhHans, en }
+export { Locale, useLocale, it, en }
