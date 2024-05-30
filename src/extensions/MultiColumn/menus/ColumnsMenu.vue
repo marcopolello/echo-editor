@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 const shouldShow = ({ editor }) => {
   return isActive(editor.view.state, 'columns')
 }
-// 获取参考元素的位置
+// Ottieni la posizione dell'elemento di riferimento
 const getReferenceClientRect = () => {
   const renderContainer = getRenderContainer(props.editor, 'columns')
   const rect = renderContainer?.getBoundingClientRect() || new DOMRect(-1000, -1000, 0, 0)
@@ -56,12 +56,12 @@ const onColumnTwo = () => {
       sticky: 'popper',
     }"
   >
-    <div class="p-2 bg-white rounded-lg dark:bg-black shadow-sm border border-neutral-200 dark:border-neutral-800">
-      <div class="flex gap-1 items-center">
+    <div class="p-2 bg-white border rounded-lg shadow-sm dark:bg-black border-neutral-200 dark:border-neutral-800">
+      <div class="flex items-center gap-1">
         <ActionButton
           title="ok"
           icon="PanelLeft"
-          tooltip="左侧边栏"
+          tooltip="Barra laterale sinistra"
           :action="onColumnLeft"
           :isActive="() => editor.isActive('columns', { layout: ColumnLayout.SidebarLeft })"
           :tooltip-options="{ sideOffset: 15 }"
@@ -69,7 +69,7 @@ const onColumnTwo = () => {
         <ActionButton
           title="ok"
           icon="Columns"
-          tooltip="两栏布局"
+          tooltip="Layout a due colonne"
           :action="onColumnTwo"
           :isActive="() => editor.isActive('columns', { layout: ColumnLayout.TwoColumn })"
           :tooltip-options="{ sideOffset: 15 }"
@@ -77,7 +77,7 @@ const onColumnTwo = () => {
         <ActionButton
           title="ok"
           icon="PanelRight"
-          tooltip="右侧边栏"
+          tooltip="Barra laterale destra"
           :action="onColumnRight"
           :isActive="() => editor.isActive('columns', { layout: ColumnLayout.SidebarRight })"
           :tooltip-options="{ sideOffset: 15 }"

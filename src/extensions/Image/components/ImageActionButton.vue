@@ -37,7 +37,7 @@ const fileInput = ref<HTMLInputElement | null>()
 async function handleFileChange(event) {
   const files = event.target.files
   if (!props.editor || props.editor.isDestroyed || files.length === 0) return
-  // 如果props.upload不存在 则提示错误
+  // Se props.upload non esiste, verrà richiesto un errore.
   if (!props.upload) {
     console.error('Please provide the `upload` prop to handle file uploads.')
     return

@@ -94,7 +94,7 @@ function selectImage() {
   editor.commands.setNodeSelection(getPos())
 }
 
-/* 当窗口或编辑器调整大小时调用 */
+/* Chiamato quando la finestra o l'editor vengono ridimensionati */
 const getMaxSize = throttle(function () {
   const { editor } = props
   const { width } = getComputedStyle(editor.view.dom)
@@ -102,8 +102,8 @@ const getMaxSize = throttle(function () {
 }, IMAGE_THROTTLE_WAIT_TIME)
 
 /*
- * 记录触发事件的位置并调整方向
- * 计算图像的初始宽度和高度
+ * Registrare la posizione dell'evento scatenante e regolare la direzione
+ * Calcola la larghezza e l'altezza iniziali dell'immagine
  */
 function onMouseDown(e: MouseEvent, dir: string) {
   e.preventDefault()
@@ -203,7 +203,7 @@ watchEffect(effect => {
 
 <template>
   <NodeViewWrapper
-    as="div"
+    as="span"
     :class="imageViewClass"
     :style="{ imageMaxStyle, textAlign: node.attrs.textAlign, width: '100%' }"
   >

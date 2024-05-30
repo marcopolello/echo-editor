@@ -1,0 +1,76 @@
+{
+  "events": [
+    {
+      "event": "call",
+      "http_server_request": {
+        "path_info": "/@id/__x00__plugin-vue:export-helper",
+        "request_method": "GET",
+        "headers": {
+          "Host": "localhost:5173",
+          "Connection": "keep-alive",
+          "Sec-Ch-Ua": "\"Google Chrome\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+          "Origin": "http://localhost:5173",
+          "Sec-Ch-Ua-Mobile": "?0",
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+          "Sec-Ch-Ua-Platform": "\"Windows\"",
+          "Accept": "*/*",
+          "Sec-Fetch-Site": "same-origin",
+          "Sec-Fetch-Mode": "cors",
+          "Sec-Fetch-Dest": "script",
+          "Referer": "http://localhost:5173/examples/App.vue",
+          "Accept-Encoding": "gzip, deflate, br, zstd",
+          "Accept-Language": "it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7",
+          "Cookie": "_dd_s=logs=1&id=3932b50b-621f-420c-ac49-53d818fa663f&created=1717051257742&expire=1717056944708",
+          "If-None-Match": "W/\"9b-LJRQlSkEmFyey2baN8wAAKI2VwI\""
+        },
+        "protocol": "HTTP/1.1"
+      },
+      "id": 1,
+      "thread_id": 0
+    },
+    {
+      "event": "return",
+      "http_server_response": {
+        "status_code": 304,
+        "headers": {
+          "Access-Control-Allow-Origin": "*"
+        }
+      },
+      "id": 2,
+      "thread_id": 0,
+      "parent_id": 1,
+      "elapsed": 0.00043450000521261245
+    }
+  ],
+  "version": "1.12",
+  "metadata": {
+    "client": {
+      "name": "appmap-node",
+      "version": "2.23.0",
+      "url": "https://github.com/getappmap/appmap-node"
+    },
+    "language": {
+      "name": "javascript",
+      "engine": "Node.js",
+      "version": "v20.12.1"
+    },
+    "app": "echo-editor",
+    "recorder": {
+      "type": "requests",
+      "name": "requests"
+    },
+    "name": "GET /@id/__x00__plugin-vue:export-helper (304) — 2024-05-30T08:00:44.815Z"
+  },
+  "classMap": [
+    {
+      "type": "http",
+      "name": "HTTP server requests",
+      "children": [
+        {
+          "type": "route",
+          "name": "GET /@id/__x00__plugin-vue:export-helper"
+        }
+      ]
+    }
+  ]
+}

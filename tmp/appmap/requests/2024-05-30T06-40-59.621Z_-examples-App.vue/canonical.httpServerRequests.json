@@ -1,0 +1,7 @@
+[
+  {
+    "route": "GET /examples/App.vue",
+    "parameters": "()",
+    "status": 304
+  }
+]

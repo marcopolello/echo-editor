@@ -4,6 +4,7 @@ import type { Editor } from '@tiptap/vue-3'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { ButtonViewReturnComponentProps } from '@/type'
 import ActionButton from '@/components/ActionButton.vue'
+import { hasExtension } from '@/utils/utils'
 
 interface Props {
   editor: Editor
@@ -50,7 +51,7 @@ function base64ToBlob(base64, mimeType) {
   const byteArray = new Uint8Array(byteNumbers)
   return new Blob([byteArray], { type: mimeType })
 }
-// 将 Blob 转换成 File 对象
+// Blob File
 function blobToFile(blob, fileName) {
   return new File([blob], fileName, { type: blob.type })
 }
@@ -58,27 +59,38 @@ async function filerImage(html: string) {
   const parser = new DOMParser()
   const doc = parser.parseFromString(html, 'text/html')
   const images = doc.querySelectorAll('img')
-  for (let img of images) {
-    const originalSrc = img.getAttribute('src')
-    const blob = base64ToBlob(originalSrc, 'image/jpeg')
-    // 将 Blob 转换成 File
-    const file = blobToFile(blob, 'image.jpeg')
-    // 获取tiptap 上传
-    const uploadOptions = props.editor.extensionManager.extensions.find(
-      extension => extension.name === 'image'
-    )?.options
-    let url = ''
-    if (uploadOptions && typeof uploadOptions.upload === 'function') {
-      const res = await uploadOptions.upload([file])
-      url = res[0].src
-    } else {
-      console.log('未找到上传方法 转化为DataURL')
-      url = URL.createObjectURL(blob)
-    }
-    const newSrc = url
-    img.setAttribute('src', newSrc)
+  if (!images.length) {
+    return doc.body.innerHTML
   }
-  return doc.body.innerHTML
+  const hasImage = hasExtension(props.editor, 'image')
+  if (hasImage) {
+    const uploadOptions = props.editor.extensionManager.extensions.find(
+      extension => extension.name === 'importWord'
+    )?.options
+    if (uploadOptions && typeof uploadOptions.upload === 'function') {
+      const files: File[] = []
+      for (let img of images) {
+        const originalSrc = img.getAttribute('src')
+        const blob = base64ToBlob(originalSrc, 'image/jpeg')
+        // Blob File
+        const file = blobToFile(blob, 'image.jpeg')
+        files.push(file)
+      }
+      const uploadRes = await uploadOptions.upload(files)
+      // images
+      for (let i = 0; i < images.length; i++) {
+        const img = images[i]
+        img.setAttribute('src', uploadRes[i].src)
+      }
+      return doc.body.innerHTML
+    } else {
+      console.log('Metodo di caricamento non trovato Salta conversione immagine')
+      return doc.body.innerHTML
+    }
+  } else {
+    console.error("Estensione immagine non trovata, impossibile convertire l'immagine")
+    return doc.body.innerHTML
+  }
 }
 async function importWord() {
   if (props.convert) {
@@ -112,7 +124,7 @@ async function importWord() {
       })
       .catch(error => {
         toast({
-          title: '导入失败 文件不支持',
+          title: 'L\'importazione non è riuscita.',
           variant: 'destructive',
         })
         console.error('Error:', error)
@@ -122,10 +134,11 @@ async function importWord() {
 }
 async function handleResult(htmlResult: string) {
   const html = await filerImage(htmlResult)
-  props.editor.commands.setContent(html)
+  console.log(html)
+  props.editor.chain().setContent(html, true).run()
   loading.value = false
   toast({
-    title: '导入成功!',
+    title: 'Importazione riuscita!',
   })
 }
 </script>

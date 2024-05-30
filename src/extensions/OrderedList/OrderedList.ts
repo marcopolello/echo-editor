@@ -4,7 +4,6 @@ import { OrderedList as TiptapOrderedList } from '@tiptap/extension-ordered-list
 import ActionButton from '@/components/ActionButton.vue'
 
 import type { GeneralOptions } from '@/type'
-import { isMacOS } from '@tiptap/core'
 
 export interface OrderedListOptions extends TiptapOrderedListOptions, GeneralOptions<OrderedListOptions> {}
 
@@ -19,7 +18,7 @@ export const OrderedList = TiptapOrderedList.extend<OrderedListOptions>({
           isActive: () => editor.isActive('orderedList') || false,
           disabled: !editor.can().toggleOrderedList(),
           icon: 'ListOrdered',
-          keyboard: isMacOS() ? '⇧ ⌘ 7' : 'Ctrl Shift 7',
+          shortcutKeys: ['mod', 'shift', '7'],
           tooltip: t('editor.orderedlist.tooltip'),
         },
       }),

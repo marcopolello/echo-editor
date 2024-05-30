@@ -10,20 +10,25 @@
       margin: 0 auto;
     "
   >
-    <div class="flex gap-32">
+    <div style="display: flex; gap: 12px">
       <button ghost @click="locale.setLang('zhHans')">Italiano</button>
-      <button ghost @click="locale.setLang('en')">Inglese</button>
+      <button ghost @click="locale.setLang('en')">English</button>
       <button ghost @click="theme = 'dark'">dark</button>
       <button ghost @click="theme = null">light</button>
+      <button ghost @click="hideToolbar = !hideToolbar">Hide Toolbar</button>
+      <a href="https://github.com/marcopolello/echo-editor" target="__blank">Github</a>
     </div>
     <echo-editor
       v-model="content"
       :extensions="extensions"
       :max-height="1024"
+      :hideToolbar="hideToolbar"
       :min-height="512"
+      output="json"
       maxWidth="900"
       :dark="theme === 'dark'"
-    />
+    >
+    </echo-editor>
     <div title="content" style="margin-top: 20px">
       {{ content }}
     </div>
@@ -37,7 +42,6 @@ import {
   BulletList,
   Italic,
   BaseKit,
-  AI,
   Underline,
   Strike,
   LineHeight,
@@ -64,6 +68,10 @@ import {
   locale,
   ImportWord,
   Columns,
+  TextAlign,
+  ImageUpload,
+  VideoUpload,
+  Code,
 } from 'echo-editor'
 import OpenAI from 'openai'
 import { DEMO_CONTENT } from './initContent'
@@ -71,6 +79,7 @@ import { createLowlight, common } from 'lowlight'
 const content = ref(DEMO_CONTENT)
 
 const theme = ref<string | null>(null)
+const hideToolbar = ref(false)
 const extensions = [
   BaseKit.configure({
     placeholder: {
@@ -95,6 +104,7 @@ const extensions = [
   Highlight,
   BulletList,
   OrderedList,
+  TextAlign.configure({ types: ['heading', 'paragraph', 'image'], spacer: true }),
   Indent,
   LineHeight,
   TaskList.configure({
@@ -104,7 +114,8 @@ const extensions = [
     },
   }),
   Link,
-  Image.configure({
+  Image,
+  ImageUpload.configure({
     upload: (files: File[]) => {
       const f = files.map(file => ({
         src: URL.createObjectURL(file),
@@ -113,10 +124,14 @@ const extensions = [
       return Promise.resolve(f)
     },
   }),
-  Video.configure({
-    upload: (file: File) => {
-      const mockUrl = 'https://www.w3schools.com/html/mov_bbb.mp4'
-      return Promise.resolve(mockUrl)
+  Video,
+  VideoUpload.configure({
+    upload: (files: File[]) => {
+      const f = files.map(file => ({
+        src: URL.createObjectURL(file),
+        alt: file.name,
+      }))
+      return Promise.resolve(f)
     },
   }),
   Blockquote,
@@ -125,7 +140,16 @@ const extensions = [
   Fullscreen.configure({ spacer: true }),
   CodeBlock.configure({ lowlight: createLowlight(common) }),
   Table,
-  ImportWord.configure({ spacer: true }),
+  Code,
+  ImportWord.configure({
+    upload: (files: File[]) => {
+      const f = files.map(file => ({
+        src: URL.createObjectURL(file),
+        alt: file.name,
+      }))
+      return Promise.resolve(f)
+    },
+  }),
   // AI.configure({
   //   completions: text => AICompletions(text),
   // }),
@@ -135,7 +159,7 @@ async function AICompletions(text?: string) {
   // @ts-ignore
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY
   if (!apiKey) {
-    console.error('请配置VITE_OPENAI_API_KEY')
+    console.error('VITE_OPENAI_API_KEY')
     return
   }
   const openai = new OpenAI({
@@ -148,7 +172,7 @@ async function AICompletions(text?: string) {
     messages: [
       {
         role: 'system',
-        content: `你将扮演一个写作助手,帮助我完成文章的创作、续写、优化等`,
+        content: `App.vue messages.content`,
       },
       {
         role: 'user',

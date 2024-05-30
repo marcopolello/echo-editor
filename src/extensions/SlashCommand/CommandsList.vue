@@ -2,12 +2,15 @@
 import { ref, watch, nextTick, VNodeRef } from 'vue'
 import { Icon } from '@/components/icons'
 import { MenuListProps } from './types'
-// 选中的索引
-const selectedCommandIndex = ref(0)
+import { useLocale } from '@/locales'
 
+// Indice selezionato
+const selectedCommandIndex = ref(0)
 const selectedGroupIndex = ref(0)
-// 滚动ref
+// Rolling Ref
 const scrollContainer = ref<HTMLDivElement | null>(null)
+
+const { t } = useLocale()
 const activeItemRef = ref<VNodeRef | null>(null)
 const props = withDefaults(defineProps<MenuListProps>(), {
   items: undefined,
@@ -18,8 +21,8 @@ defineExpose({ onKeyDown })
 
 watch([() => selectedCommandIndex.value, () => selectedGroupIndex.value], async () => {
   if (!scrollContainer.value) return
-  await nextTick() // 等待 DOM 更新完成
-  // 取当前选中的dom元素
+  await nextTick() // Aspettare DOM Aggiornamento completato
+  // Prendi l'elemento DOM attualmente selezionato
   const activeItem = activeItemRef.value?.[0]
   if (activeItem) {
     const offsetTop = activeItem.offsetTop
@@ -116,7 +119,6 @@ function createCommandClickHandler(groupIndex: number, commandIndex: number) {
         >
           {{ group.title }}
         </div>
-
         <button
           class="flex items-center gap-3 px-2 py-1.5 text-sm text-neutral-800 dark:text-neutral-200 text-left w-full rounded-sm outline-none transition-colors"
           :class="[
@@ -131,13 +133,12 @@ function createCommandClickHandler(groupIndex: number, commandIndex: number) {
         >
           <img v-if="command.iconUrl" class="w-6 h-6" :src="command.iconUrl" />
           <Icon v-if="command.iconName" :name="command.iconName" class="mr-1 text-lg" />
-
           {{ command.label }}
         </button>
       </template>
     </div>
     <div class="p-3" v-else>
-      <span class="text-xs text-gray-800 dark:text-gray-100">暂无搜索结果</span>
+      <span class="text-xs text-gray-800 dark:text-gray-100">{{ t('editor.slash.empty') }}</span>
     </div>
   </div>
 </template>

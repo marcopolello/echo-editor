@@ -1,0 +1,68 @@
+{
+  "events": [
+    {
+      "event": "call",
+      "http_server_request": {
+        "path_info": "/examples/main.ts",
+        "request_method": "GET",
+        "headers": {
+          "Host": "localhost:5173",
+          "Connection": "keep-alive",
+          "Sec-Ch-Ua": "\"Google Chrome\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+          "Origin": "http://localhost:5173",
+          "Sec-Ch-Ua-Mobile": "?0",
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+          "Sec-Ch-Ua-Platform": "\"Windows\"",
+          "Accept": "*/*",
+          "Sec-Fetch-Site": "same-origin",
+          "Sec-Fetch-Mode": "cors",
+          "Sec-Fetch-Dest": "script",
+          "Referer": "http://localhost:5173/",
+          "Accept-Encoding": "gzip, deflate, br, zstd",
+          "Accept-Language": "it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7",
+          "Cookie": "_dd_s=logs=1&id=187cebdf-de83-4e4a-9dd1-19aded97f704&created=1716985873920&expire=1716987326747",
+          "If-None-Match": "W/\"f9-k74hiJ01XSvoQq8e03H00wvYEYA\""
+        },
+        "protocol": "HTTP/1.1"
+      },
+      "id": 1,
+      "thread_id": 0
+    },
+    {
+      "event": "return",
+      "thread_id": 0,
+      "parent_id": 1
+    }
+  ],
+  "version": "1.12",
+  "metadata": {
+    "client": {
+      "name": "appmap-node",
+      "version": "2.23.0",
+      "url": "https://github.com/getappmap/appmap-node"
+    },
+    "language": {
+      "name": "javascript",
+      "engine": "Node.js",
+      "version": "v20.12.1"
+    },
+    "app": "echo-editor",
+    "recorder": {
+      "type": "requests",
+      "name": "requests"
+    },
+    "name": "GET /@vite/client (304) — 2024-05-29T12:40:26.825Z"
+  },
+  "classMap": [
+    {
+      "type": "http",
+      "name": "HTTP server requests",
+      "children": [
+        {
+          "type": "route",
+          "name": "GET /examples/main.ts"
+        }
+      ]
+    }
+  ]
+}

@@ -14,9 +14,9 @@ import { ButtonViewReturnComponentProps } from '@/type'
 const { t } = useLocale()
 
 function percentageToDecimal(percentageString) {
-  // 去掉百分号并转换成数字
+  // Rimuovi il numero percentuale e convertilo in numeri
   const percentage = parseFloat(percentageString.replace('%', ''))
-  // 将百分比转换成小数
+  // Convertire la percentuale in decimale
   const decimal = percentage / 100
   return decimal
 }
@@ -40,7 +40,6 @@ interface Props {
   editor: Editor
   icon?: any
   tooltip?: string
-  keyboard?: string
   disabled?: boolean
   action?: ButtonViewReturnComponentProps['action']
   isActive?: ButtonViewReturnComponentProps['isActive']
@@ -50,7 +49,6 @@ const props = withDefaults(defineProps<Props>(), {
   icon: undefined,
   tooltip: undefined,
   disabled: false,
-  keyboard: undefined,
   action: undefined,
   isActive: undefined,
 })
@@ -67,14 +65,12 @@ function toggleLightheight(key: string) {
 
 <template>
   <DropdownMenu>
-    <DropdownMenuTrigger as-child>
-      <div style="display: flex">
-        <ActionButton custom-class="w-12" icon="LineHeight" :tooltip="tooltip">
-          <Icon class="w-3 h-3 text-zinc-500 ml-1" name="MenuDown" />
-        </ActionButton>
-      </div>
+    <DropdownMenuTrigger>
+      <ActionButton custom-class="w-12" icon="LineHeight" :tooltip="tooltip">
+        <Icon class="w-3 h-3 ml-1 text-zinc-500" name="MenuDown" />
+      </ActionButton>
     </DropdownMenuTrigger>
-    <DropdownMenuContent class="min-w-4 w-20">
+    <DropdownMenuContent class="min-w-24">
       <DropdownMenuCheckboxItem
         v-for="(item, index) in LineHeights"
         :key="index"

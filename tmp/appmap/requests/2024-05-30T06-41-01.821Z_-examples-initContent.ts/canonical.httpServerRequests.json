@@ -1,0 +1,7 @@
+[
+  {
+    "route": "GET /examples/initContent.ts",
+    "parameters": "()",
+    "status": 304
+  }
+]

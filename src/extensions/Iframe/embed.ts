@@ -26,11 +26,8 @@ export const MapServices: ServiceType[] = [
 ]
 
 export const DesignServices: ServiceType[] = [
-  //{ label: 'modao', value: 'modao', icon: 'Modao' },
-  //{ label: 'lanhu', value: 'lanhu', icon: 'Lanhu' },
   { label: 'Figma', value: 'figma', icon: 'Figma' },
   { label: 'Canva', value: 'canva', icon: 'Canva' },
-  //{ label: 'ProcessOn', value: 'processon', icon: 'Processon' },
 ]
 
 export const DevelopServices: ServiceType[] = [{ label: 'CodePen', value: 'codepen', icon: 'Codepen' }]

@@ -27,7 +27,7 @@ interface Props {
 watch(
   () => isFullscreen.value,
   (val, oldVal) => {
-    // 同步状态
+    // Stato della sincronizzazione
     if (val !== oldVal) {
       toggleFullscreen()
     }

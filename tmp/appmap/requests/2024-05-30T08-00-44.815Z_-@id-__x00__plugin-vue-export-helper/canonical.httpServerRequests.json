@@ -1,0 +1,7 @@
+[
+  {
+    "route": "GET /@id/__x00__plugin-vue:export-helper",
+    "parameters": "()",
+    "status": 304
+  }
+]

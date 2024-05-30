@@ -25,7 +25,7 @@ export type PainterAction = {
   marks: Mark[]
 }
 /**
- * Formato刷
+ * Formato spazzola
  */
 export const FormatPainter = Extension.create<FormatPainterOptions>({
   name: 'painter',
@@ -88,7 +88,7 @@ export const FormatPainter = Extension.create<FormatPainterOptions>({
               const marks = this.getState(view.state) as Mark[]
               if (!marks || marks.length == 0) {
                 view.dom.style.cursor = ''
-                return false // 如果没有标记，则不执行任何操作
+                return false // se non è presente alcun tag, non fare nulla
               }
               const mouseup = () => {
                 document.removeEventListener('mouseup', mouseup)

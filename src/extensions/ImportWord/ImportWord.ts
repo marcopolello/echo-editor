@@ -1,14 +1,17 @@
 import { Extension } from '@tiptap/core'
 
 import ActionButton from './components/ImportWordButton.vue'
-
+import { ImageNodeAttributes } from '@/utils/image'
 import type { GeneralOptions } from '@/type'
 
 export interface ImportWordOptions extends GeneralOptions<ImportWordOptions> {
   /**
-   * 将word 转换成html的接口
+   * Interfaccia per convertire word in html
    */
   convert?: (file: File) => Promise<string>
+
+  /** Function for uploading images */
+  upload?: (files: File[]) => ImageNodeAttributes[] | Promise<ImageNodeAttributes[]>
 }
 
 export const ImportWord = Extension.create<ImportWordOptions>({
@@ -16,6 +19,7 @@ export const ImportWord = Extension.create<ImportWordOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
+      upload: undefined,
       convert: undefined,
       button: ({ editor, extension, t }) => {
         const { convert } = extension.options

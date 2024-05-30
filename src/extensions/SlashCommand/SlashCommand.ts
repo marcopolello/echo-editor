@@ -32,8 +32,6 @@ export const SlashCommand = Extension.create({
   },
 
   addProseMirrorPlugins() {
-    const groups = renderGroups(this.editor)
-
     return [
       Suggestion({
         editor: this.editor,
@@ -46,7 +44,7 @@ export const SlashCommand = Extension.create({
           const isRootDepth = $from.depth === 1
           const isParagraph = $from.parent.type.name === 'paragraph'
           const isStartOfNode = $from.parent.textContent?.charAt(0) === '/'
-          // TODO 行elenco内
+          // TODO Cammina a Elenco
           const isInColumn = this.editor.isActive('column')
           const afterContent = $from.parent.textContent?.substring($from.parent.textContent?.indexOf('/'))
           const isValidAfterContent = !afterContent?.endsWith('  ')
@@ -63,6 +61,7 @@ export const SlashCommand = Extension.create({
         },
         items: ({ query, editor }: { query: string; editor: Editor }) => {
           // Filter commands
+          const groups = renderGroups(this.editor)
           const withFilteredCommands = groups.map(group => ({
             ...group,
             commands: group.commands

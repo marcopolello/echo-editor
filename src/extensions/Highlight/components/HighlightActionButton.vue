@@ -46,14 +46,14 @@ watchEffect(() => {
   <div class="flex items-center h-[32px]">
     <ActionButton :tooltip="tooltip" :disabled="disabled" :action="toggleColor" :tooltip-options="tooltipOptions">
       <template #icon>
-        <span class="text-sm flex items-center justify-center"
+        <span class="flex items-center justify-center text-sm"
           ><svg width="18px" height="18px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <g id="icon/colore di riempimento" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-              <g id="icon/背景颜色">
-                <g id="编组" fill="currentColor">
+              <g id="icon/colore di sfondo">
+                <g id="gruppo" fill="currentColor">
                   <g
                     transform="translate(119.502295, 137.878331) rotate(-135.000000) translate(-119.502295, -137.878331) translate(48.002295, 31.757731)"
-                    id="矩形"
+                    id="rettangolo"
                   >
                     <path
                       d="M100.946943,60.8084699 L43.7469427,60.8084699 C37.2852111,60.8084699 32.0469427,66.0467383 32.0469427,72.5084699 L32.0469427,118.70847 C32.0469427,125.170201 37.2852111,130.40847 43.7469427,130.40847 L100.946943,130.40847 C107.408674,130.40847 112.646943,125.170201 112.646943,118.70847 L112.646943,72.5084699 C112.646943,66.0467383 107.408674,60.8084699 100.946943,60.8084699 Z M93.646,79.808 L93.646,111.408 L51.046,111.408 L51.046,79.808 L93.646,79.808 Z"
@@ -71,12 +71,11 @@ watchEffect(() => {
                 </g>
                 <path
                   d="M51,218 L205,218 C211.075132,218 216,222.924868 216,229 C216,235.075132 211.075132,240 205,240 L51,240 C44.9248678,240 40,235.075132 40,229 C40,222.924868 44.9248678,218 51,218 Z"
-                  id="矩形"
+                  id="rettangolo"
                   :fill="selectedColor || '#FBDE28'"
                 ></path>
               </g>
-            </g></svg
-        ></span>
+            </g></svg></span>
       </template>
     </ActionButton>
     <color-picker v-model="selectedColor" @change="onChange" highlight>
