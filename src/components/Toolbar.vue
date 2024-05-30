@@ -28,7 +28,11 @@ const items = computed(() => {
     return a - b
   })
 
-  let menus: Menu[] = []
+  let menus: Menu[] = [];
+
+  for (const extension of sortExtensions) {
+    console.log ("estensione => " + extension.name + "  type => " + extension.type);
+  }
 
   for (const extension of sortExtensions) {
     const { button, divider = false, spacer = false, toolbar = true } = extension.options
@@ -58,7 +62,7 @@ const items = computed(() => {
 
 <template>
   <div v-bind="$attrs">
-    <div class="flex flex-wrap h-auto relative gap-y-1 gap-x-1">
+    <div class="relative flex flex-wrap h-auto gap-y-1 gap-x-1">
       <template v-for="(item, key) in items" :key="key">
         <div class="flex items-center">
           <Separator v-if="item.spacer" orientation="vertical" class="h-[16px] mx-[10px]" />

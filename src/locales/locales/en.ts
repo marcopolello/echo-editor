@@ -98,6 +98,7 @@ const locale: Record<string, string> = {
   'editor.table.menu.delete_row': 'Delete Row',
   'editor.table.menu.merge_or_split_cells': 'Merge Or Split Cells',
   'editor.table.menu.delete_table': 'Delete Table',
+  'editor.skeleton.tooltip': 'Skeleton',
   'editor.blockquote.tooltip': 'Blockquote',
   'editor.horizontalrule.tooltip': 'Horizontal Rule',
   'editor.code.tooltip': 'Code',

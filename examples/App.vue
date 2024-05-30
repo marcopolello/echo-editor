@@ -72,11 +72,14 @@ import {
   ImageUpload,
   VideoUpload,
   Code,
+  Skeleton,
 } from 'echo-editor'
 import OpenAI from 'openai'
 import { DEMO_CONTENT } from './initContent'
 import { createLowlight, common } from 'lowlight'
-const content = ref(DEMO_CONTENT)
+//TODPOL
+//const content = ref(DEMO_CONTENT)
+const content = "";
 
 const theme = ref<string | null>(null)
 const hideToolbar = ref(false)
@@ -150,12 +153,14 @@ const extensions = [
       return Promise.resolve(f)
     },
   }),
-  // AI.configure({
-  //   completions: text => AICompletions(text),
-  // }),
+  Skeleton
+  //AI.configure({
+  //  completions: text => AICompletions(text),
+  //}),
 ]
+//TODPOL
 async function AICompletions(text?: string) {
-  // 从.env中获取key 请自行sostituire
+  // Ottieni la chiave da .env, si prega di inviare
   // @ts-ignore
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY
   if (!apiKey) {
