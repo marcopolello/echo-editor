@@ -32,7 +32,7 @@ export const icons = {
   Maximize: 'lucide:maximize',
   Minimize: 'lucide:minimize',
   Table: 'lucide:table',
-  Skeleton: 'tabler:template',
+  Layout: 'tabler:template',
   Sparkles: 'lucide:sparkles',
   Pencil: 'lucide:pencil',
   Unlink: 'lucide:unlink',

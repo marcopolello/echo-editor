@@ -73,6 +73,7 @@ import {
   VideoUpload,
   Code,
   Skeleton,
+  Layout,
 } from 'echo-editor'
 import OpenAI from 'openai'
 import { DEMO_CONTENT } from './initContent'
@@ -153,7 +154,8 @@ const extensions = [
       return Promise.resolve(f)
     },
   }),
-  Skeleton
+  Skeleton,
+  Layout
   //AI.configure({
   //  completions: text => AICompletions(text),
   //}),

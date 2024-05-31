@@ -102,8 +102,11 @@ export const COLORS_LIST = [
 /** Default font size list */
 export const DEFAULT_FONT_SIZE_LIST = [12, 13, 14, 15, 16, 19, 22, 24, 29, 32, 40, 48] as const
 
+/** Default font size list */
+export const DEFAULT_SKELETONS_LIST = [1,2,3,4,5] as const
+
 /** Default font size value */
-export const DEFAULT_FONT_SIZE_VALUE = 'defaut' as const
+export const DEFAULT_FONT_SIZE_VALUE = 'default' as const
 
 /** Options for setting image size in the bubble menu */
 export enum IMAGE_SIZE {

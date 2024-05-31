@@ -48,6 +48,7 @@ const locale: Record<string, string> = {
   'editor.tasklist.tooltip': 'lista di attività',
   'editor.indent.tooltip': 'indenta',
   'editor.outdent.tooltip': 'outdent',
+  'editor.columns.tooltip': 'Colonne',
   'editor.link.tooltip': 'link',
   'editor.link.unlink.tooltip': 'elimina link',
   'editor.link.open.tooltip': 'apri link',

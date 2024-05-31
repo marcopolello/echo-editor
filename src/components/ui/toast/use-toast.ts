@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue'
-import type { Component, VNode } from 'vue'
+import type { Component, ComputedRef, VNode } from 'vue'
 import type { ToastProps } from '.'
 
 const TOAST_LIMIT = 1
@@ -51,6 +51,12 @@ type Action =
 interface State {
   toasts: ToasterToast[]
 }
+
+type ToastReturn = {
+  id: string;
+  dismiss: () => void;
+  update: (props: ToasterToast) => void;
+};
 
 const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>()
 
@@ -111,12 +117,16 @@ function dispatch(action: Action) {
       break
   }
 }
-function useToast() {
+function useToast(): {
+  toasts: ComputedRef<ToasterToast[]>;
+  toast: (props: Toast) => ToastReturn;
+  dismiss: (toastId?: string) => void;
+} {
   return {
     toasts: computed(() => state.value.toasts),
     toast,
     dismiss: (toastId?: string) => dispatch({ type: actionTypes.DISMISS_TOAST, toastId }),
-  }
+  };
 }
 
 type Toast = Omit<ToasterToast, 'id'>

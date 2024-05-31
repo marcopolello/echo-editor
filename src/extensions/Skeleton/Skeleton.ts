@@ -1,46 +1,44 @@
-import { Node, mergeAttributes } from '@tiptap/core'
+import { Node, Extension, mergeAttributes } from '@tiptap/core'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
+import type { Item } from './components/SkeletonActionButton.vue'
 import ArticleBlock from './components/ArticleBlock.vue'
 import SkeletonActionButton from './components/SkeletonActionButton.vue'
+import { DEFAULT_SKELETONS_LIST } from '@/constants'
 
-export const Skeleton = Node.create({
+export const Skeleton = Extension.create({
   name: 'skeleton',
-
-  group: 'block',
-
-  content: 'block+',
-
-  parseHTML() {
-    return [
-      {
-        tag: 'div[data-type="skeleton"]',
-      },
-    ]
-  },
-
-  renderHTML({ HTMLAttributes }) {
-    return ['div', mergeAttributes(HTMLAttributes, { 'data-type': 'skeleton' }), 0]
-  },
-
-  addNodeView() {
-    return VueNodeViewRenderer(ArticleBlock)
-  },
-
   addOptions() {
-        return {
+    return {
       ...this.parent?.(),
-      HTMLAttributes: {},
-      resizable: true,
-      //lastColumnResizable: true,
-      //allowTableNodeSelection: false,
-      button: ({ editor, t }) => ({
-        component: SkeletonActionButton,
-        componentProps: {
-          disabled: editor.isActive('table') || false,
-          icon: 'Skeleton',
-          tooltip: t('editor.skeleton.tooltip'),
-        },
-      }),
+      //types: ['textStyle'],
+      //fontSizes: [...DEFAULT_FONT_SIZE_LIST],
+      skeletons: [...DEFAULT_SKELETONS_LIST],
+      button({ editor, extension, t }) {
+        const skeletons = extension.options?.skeletons || [];
+        const items: Item[] = [...skeletons].map(k => ({
+          title: "skeletons",
+          isActive: () => {
+            return true;
+          },
+          action: () => {
+            editor.commands.setSkeleton(String(k))
+          },
+          disabled: false,
+          divider: false,
+          default: false,
+        }))
+        const disabled = items.filter(k => k.disabled).length === items.length
+        return {
+          component: SkeletonActionButton,
+          componentProps: {
+            editor,
+            tooltip: "skeletons",
+            disabled,
+            items,
+            maxHeight: 280,
+          },
+        }
+      },
     }
   },
 })

@@ -1,14 +1,14 @@
 {
   "name": "echo-editor",
-  "version": "0.1.9",
+  "version": "0.1.1",
   "private": false,
   "license": "MIT",
-  "description": "A modern WYSIWYG rich-text editor using tiptap for Vue.js",
-  "author": "SEED<hello.mr.lji@gmail.com>",
-  "homepage": "https://github.com/Seedsa/echo-editor/",
+  "description": "text editor",
+  "author": "Marco Polello",
+  "homepage": "https://github.com/marcopolello/echo-editor",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Seedsa/echo-editor/"
+    "url": "https://github.com/marcopolello/echo-editor"
   },
   "scripts": {
     "dev": "vite",
@@ -115,12 +115,11 @@
     "clsx": "^2.1.1",
     "echo-drag-handle-plugin": "^0.0.2",
     "lucide-vue-next": "^0.378.0",
-    "tippy.js": "^6.3.7"
+    "tippy.js": "^6.3.7",
+    "vee-validate": "^4.12.8",
+    "vueperslides": "^3.5.1"
   },
   "devDependencies": {
-    "radix-vue": "^1.7.3",
-    "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/cz-commitlint": "^19.2.0",
@@ -142,9 +141,12 @@
     "lint-staged": "^15.2.2",
     "lodash-unified": "^1.0.3",
     "prettier": "^3.2.5",
+    "radix-vue": "^1.7.3",
     "rollup-plugin-visualizer": "^5.12.0",
     "sass": "^1.75.0",
+    "tailwind-merge": "^2.3.0",
     "tailwindcss": "^3.4.3",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.5",
     "vite": "^5.2.0",
     "vite-plugin-dts": "^3.9.0",
