@@ -17,6 +17,7 @@ declare module '@tiptap/core' {
     }
   }
 }
+
 export interface ColumnsOptions extends GeneralOptions<ColumnsOptions> {
   columnOptions: any
   layout: ColumnLayout
@@ -43,38 +44,38 @@ export const Columns = Node.create<ColumnsOptions>({
     }
   },
   addCommands() {
+    const generateColumnsHTML = (layout) => {
+      if (layout === ColumnLayout.ThreeColumn) {
+        return `<div data-type="columns" class="layout-${layout}">
+                  <div data-type="column" data-position="left"><p></p></div>
+                  <div data-type="column" data-position="center"><p></p></div>
+                  <div data-type="column" data-position="right"><p></p></div>
+                </div>`;
+      }
+      return `<div data-type="columns" class="layout-${layout}">
+                <div data-type="column" data-position="left"><p></p></div>
+                <div data-type="column" data-position="right"><p></p></div>
+              </div>`;
+    };
     return {
       setColumns:
         () =>
         ({ commands }) => {
-          //if (commands) {
-          //  console.log(commands);
-          //}
-          commands.insertContent(
-            `<div data-type="columns"><div data-type="column" data-position="left"><p></p></div><div data-type="column" data-position="center"><p></p></div><div data-type="column" data-position="right"><p></p></div></div>`
-          )
+          commands.insertContent(generateColumnsHTML(ColumnLayout.TwoColumn))
           return true
         },
 
       setLayout: (layout: ColumnLayout) => ({ commands }) => {
-        console.log(`Updating layout to: ${layout}`);
         return commands.updateAttributes('columns', { layout });
       }
     }
   },
+
   renderHTML({ HTMLAttributes }) {
-    const layoutClass = `layout-${HTMLAttributes.layout}`; 
-  if (HTMLAttributes.layout === 'three-column') {
-    return [
-      'div', 
-      { 'data-type': 'columns', class: layoutClass }, 
-      ['div', { 'data-type': 'column', 'data-position': 'left' }, 0],
-      ['div', { 'data-type': 'column', 'data-position': 'center' }, 0],
-      ['div', { 'data-type': 'column', 'data-position': 'right' }, 0]
-    ];
-  }
-  return ['div', { 'data-type': 'columns', class: layoutClass }, 0];
+    const layoutClass = `layout-${HTMLAttributes.layout}`;
+    return ['div', { 'data-type': 'columns', class: layoutClass }, 0];
   },
+
   parseHTML() {
     return [
       {
@@ -82,6 +83,7 @@ export const Columns = Node.create<ColumnsOptions>({
       },
     ]
   },
+
   addExtensions() {
     return [Column.configure(this.options.columnOptions)]
   },
