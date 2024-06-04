@@ -104,6 +104,11 @@
     &.layout-two-column {
       grid-template-columns: 1fr 1fr;
     }
+
+    &.layout-three-column {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
   }
 
   [data-type='column'] {

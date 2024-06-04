@@ -30,9 +30,9 @@ const items = computed(() => {
 
   let menus: Menu[] = [];
 
-  for (const extension of sortExtensions) {
-    console.log ("estensione => " + extension.name + "  type => " + extension.type);
-  }
+  //for (const extension of sortExtensions) {
+  //  console.log ("estensione => " + extension.name + "  type => " + extension.type);
+  //}
 
   for (const extension of sortExtensions) {
     const { button, divider = false, spacer = false, toolbar = true } = extension.options

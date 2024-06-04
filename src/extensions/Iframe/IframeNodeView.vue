@@ -18,11 +18,11 @@ const src = computed({
 })
 function handleConfirm() {
   let result = getServiceSrc(props.node.attrs.service, originalLink.value)
-  // 校验链接合法
+  // Il collegamento di verifica è legale
   if (result.validLink && result.validId) {
     src.value = result.src
   } else {
-    console.log('暂不支持')
+    console.log('Nessun supporto per il momento')
   }
 }
 function handleExmaple() {

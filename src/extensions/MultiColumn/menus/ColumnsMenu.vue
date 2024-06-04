@@ -38,6 +38,11 @@ const onColumnRight = () => {
 const onColumnTwo = () => {
   props.editor.chain().focus().setLayout(ColumnLayout.TwoColumn).run()
 }
+
+const onColumnThree = () => {
+  //console.log("Setting layout to ThreeColumn");
+  props.editor.chain().focus().setLayout(ColumnLayout.ThreeColumn).run()
+}
 </script>
 
 <template>
@@ -72,6 +77,14 @@ const onColumnTwo = () => {
           tooltip="Layout a due colonne"
           :action="onColumnTwo"
           :isActive="() => editor.isActive('columns', { layout: ColumnLayout.TwoColumn })"
+          :tooltip-options="{ sideOffset: 15 }"
+        />
+        <ActionButton
+          title="ok"
+          icon="Columns3"
+          tooltip="Layout a tre colonne"
+          :action="onColumnThree"
+          :isActive="() => editor.isActive('columns', { layout: ColumnLayout.ThreeColumn })"
           :tooltip-options="{ sideOffset: 15 }"
         />
         <ActionButton
