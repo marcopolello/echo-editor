@@ -44,24 +44,14 @@ export const Columns = Node.create<ColumnsOptions>({
     }
   },
   addCommands() {
-    const generateColumnsHTML = (layout) => {
-      if (layout === ColumnLayout.ThreeColumn) {
-        return `<div data-type="columns" class="layout-${layout}">
-                  <div data-type="column" data-position="left"><p></p></div>
-                  <div data-type="column" data-position="center"><p></p></div>
-                  <div data-type="column" data-position="right"><p></p></div>
-                </div>`;
-      }
-      return `<div data-type="columns" class="layout-${layout}">
-                <div data-type="column" data-position="left"><p></p></div>
-                <div data-type="column" data-position="right"><p></p></div>
-              </div>`;
-    };
     return {
       setColumns:
         () =>
         ({ commands }) => {
-          commands.insertContent(generateColumnsHTML(ColumnLayout.TwoColumn))
+          commands.insertContent(`<div data-type="columns" class="layout-two-column">
+                <div data-type="column" data-position="left"><p></p></div>
+                <div data-type="column" data-position="right"><p></p></div>
+              </div>`)
           return true
         },
 
