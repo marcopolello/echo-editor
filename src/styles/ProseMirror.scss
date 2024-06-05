@@ -110,10 +110,10 @@
     }
 
   }
-
   [data-type='column'] {
     @apply overflow-auto;
   }
+  
   code {
     @apply caret-white text-white bg-neutral-900 rounded-sm shadow-lg font-mono;
 

@@ -12,7 +12,7 @@ export enum ColumnLayout {
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     columns: {
-      setColumns: () => ReturnType
+      setColumns: (layout?: ColumnLayout) => ReturnType
       setLayout: (layout: ColumnLayout) => ReturnType
     }
   }
@@ -46,13 +46,19 @@ export const Columns = Node.create<ColumnsOptions>({
   addCommands() {
     return {
       setColumns:
-        () =>
+        (layout?: ColumnLayout) =>
         ({ commands }) => {
-          commands.insertContent(`<div data-type="columns" class="layout-two-column">
-                <div data-type="column" data-position="left"><p></p></div>
-                <div data-type="column" data-position="right"><p></p></div>
-              </div>`)
-          return true
+          if (layout === ColumnLayout.ThreeColumn) {
+            commands.insertContent(`<div data-type="columns">
+            <div data-type="column" data-position="left"></div>
+            <div data-type="column" data-position="center"></div>
+            <div data-type="column" data-position="right"></div>
+            </div>`)
+            return true
+          } else {
+            commands.insertContent(`<div data-type="columns"><div data-type="column" data-position="left"><p></p></div><div data-type="column" data-position="right"><p></p></div></div>`)
+            return true
+          }
         },
 
       setLayout: (layout: ColumnLayout) => ({ commands }) => {

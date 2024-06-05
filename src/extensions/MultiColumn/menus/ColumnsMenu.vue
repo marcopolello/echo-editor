@@ -16,6 +16,8 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
 })
 
+console.log(props.editor);
+
 const shouldShow = ({ editor }) => {
   return isActive(editor.view.state, 'columns')
 }
@@ -36,11 +38,14 @@ const onColumnRight = () => {
 }
 
 const onColumnTwo = () => {
+  console.log(props.editor);
+  console.log("Setting layout to TwoColumn");
   props.editor.chain().focus().setLayout(ColumnLayout.TwoColumn).run()
 }
 
 const onColumnThree = () => {
-  //console.log("Setting layout to ThreeColumn");
+  console.log(props.editor);
+  console.log("Setting layout to ThreeColumn");
   props.editor.chain().focus().setLayout(ColumnLayout.ThreeColumn).run()
 }
 </script>
@@ -81,18 +86,18 @@ const onColumnThree = () => {
         />
         <ActionButton
           title="ok"
-          icon="Columns3"
-          tooltip="Layout a tre colonne"
-          :action="onColumnThree"
-          :isActive="() => editor.isActive('columns', { layout: ColumnLayout.ThreeColumn })"
-          :tooltip-options="{ sideOffset: 15 }"
-        />
-        <ActionButton
-          title="ok"
           icon="PanelRight"
           tooltip="Barra laterale destra"
           :action="onColumnRight"
           :isActive="() => editor.isActive('columns', { layout: ColumnLayout.SidebarRight })"
+          :tooltip-options="{ sideOffset: 15 }"
+        />
+        <ActionButton
+          title="ok"
+          icon="Columns3"
+          tooltip="Layout a tre colonne"
+          :action="onColumnThree"
+          :isActive="() => editor.isActive('multiColumns', { layout: ColumnLayout.ThreeColumn })"
           :tooltip-options="{ sideOffset: 15 }"
         />
       </div>

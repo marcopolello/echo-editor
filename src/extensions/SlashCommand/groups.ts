@@ -3,6 +3,7 @@ import { Group } from './types'
 import { useLocale } from '@/locales'
 import { hasExtension } from '@/utils/utils'
 import { AllEmbedServices } from '@/extensions/Iframe/embed'
+import { ColumnLayout } from '../MultiColumn/Columns'
 
 export function renderGroups(editor: Editor) {
   const { t } = useLocale()
@@ -147,6 +148,22 @@ export function renderGroups(editor: Editor) {
               .chain()
               .deleteRange(range)
               .setColumns()
+              .focus(editor.state.selection.head - 1)
+              .run()
+          },
+        },
+        {
+          name: 'columns',
+          label: t.value('editor.columns.tooltip'),
+          iconName: 'Columns3',
+          description: 'Add three column content',
+          aliases: ['columns', 'cols', '3cols'],
+          shouldBeHidden: editor => editor.isActive('columns3'),
+          action: ({ editor, range }) => {
+            editor
+              .chain()
+              .deleteRange(range)
+              .setColumns(ColumnLayout.ThreeColumn)
               .focus(editor.state.selection.head - 1)
               .run()
           },
