@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, unref, watchEffect } from 'vue'
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'
-import { ImageAttrsOptions } from '../types'
 
 import { IMAGE_MAX_SIZE, IMAGE_MIN_SIZE, IMAGE_THROTTLE_WAIT_TIME } from '@/constants'
 import { clamp, isNumber, throttle } from '@/utils/utils'
@@ -64,15 +63,6 @@ const imgAttrs = computed(() => {
   }
 })
 
-const display = computed<ImageAttrsOptions['display']>(() => props.node.attrs.display || undefined)
-const lockAspectRatio = computed<ImageAttrsOptions['lockAspectRatio']>(() => props.node.attrs.lockAspectRatio ?? true)
-const imageViewClass = computed<string[]>(() => {
-  if (typeof unref(display) === 'string') {
-    return ['image-view', `image-view--${unref(display)}`]
-  }
-
-  return ['image-view']
-})
 const imageMaxStyle = computed(() => {
   const {
     style: { width },
@@ -153,7 +143,7 @@ const onMouseMove = throttle(function (e: MouseEvent) {
   const dy = (e.clientY - y) * (/t/.test(dir) ? -1 : 1)
 
   const width = clamp(w + dx, IMAGE_MIN_SIZE, unref(maxSize).width)
-  const height = unref(lockAspectRatio) ? null : Math.max(h + dy, IMAGE_MIN_SIZE)
+  const height = null
 
   props.updateAttributes({
     width,
@@ -202,11 +192,7 @@ watchEffect(effect => {
 </script>
 
 <template>
-  <NodeViewWrapper
-    as="span"
-    :class="imageViewClass"
-    :style="{ imageMaxStyle, textAlign: node.attrs.textAlign, width: '100%' }"
-  >
+  <NodeViewWrapper class="image-view" :style="{ imageMaxStyle, textAlign: node.attrs.textAlign, width: '100%' }">
     <div
       draggable="true"
       data-drag-handle
@@ -221,7 +207,8 @@ watchEffect(effect => {
         :src="imgAttrs.src"
         :alt="imgAttrs.alt"
         :style="imgAttrs.style"
-        class="image-view__body__image"
+        height="auto"
+        class="image-view__body__image block"
         @load="onImageLoad"
         @click="selectImage"
       />

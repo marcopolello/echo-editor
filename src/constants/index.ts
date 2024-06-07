@@ -100,7 +100,22 @@ export const COLORS_LIST = [
 ] as const
 
 /** Default font size list */
-export const DEFAULT_FONT_SIZE_LIST = [12, 13, 14, 15, 16, 19, 22, 24, 29, 32, 40, 48] as const
+export const DEFAULT_FONT_SIZE_LIST = [
+  '10px',
+  '11px',
+  '12px',
+  '14px',
+  '16px',
+  '18px',
+  '20px',
+  '22px',
+  '24px',
+  '26px',
+  '28px',
+  '36px',
+  '48px',
+  '72px',
+] as const
 
 /** Default font size list */
 export const DEFAULT_SKELETONS_LIST = [1,2,3,4,5] as const
@@ -133,7 +148,9 @@ export const NODE_TYPE_MENU: any = {
     'image-size-medium',
     'image-size-large',
     'divider',
-    'textAlign',
+    'image-left',
+    'image-center',
+    'image-right',
     'divider',
     'image-aspect-ratio',
     'remove',

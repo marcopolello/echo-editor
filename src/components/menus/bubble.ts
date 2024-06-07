@@ -3,9 +3,10 @@ import type { Editor } from '@tiptap/vue-3'
 import ActionButton from '../ActionButton.vue'
 import { IMAGE_SIZE, VIDEO_SIZE } from '@/constants'
 import type { ButtonViewParams, ButtonViewReturn, ExtensionNameKeys } from '@/type'
-
+import { useLocale } from '@/locales'
 /** Represents the size types for bubble images or videos */
 type BubbleImageOrVideoSizeType = 'size-small' | 'size-medium' | 'size-large'
+type ImageAlignments = 'left' | 'center' | 'right'
 
 /** Represents the various types for bubble images */
 type BubbleImageType =
@@ -80,7 +81,27 @@ const imageSizeMenus = (editor: Editor): BubbleMenuItem[] => {
   }))
 }
 
-// 视频尺寸菜单
+const imageAlignMenus = (editor: Editor): BubbleMenuItem[] => {
+  const { t } = useLocale()
+  const types: ImageAlignments[] = ['left', 'center', 'right']
+  const iconMap: any = {
+    left: 'AlignLeft',
+    center: 'AlignCenter',
+    right: 'AlignRight',
+  }
+  return types.map((k, i) => ({
+    type: `image-${k}`,
+    component: ActionButton,
+    componentProps: {
+      tooltip: t.value(`editor.textalign.${k}.tooltip`),
+      icon: iconMap[k],
+      action: () => editor.commands.setTextAlign(k),
+      isActive: () => editor.isActive({ textAlign: k }) || false,
+    },
+  }))
+}
+
+// Menu delle dimensioni del video
 const videoSizeMenus = (editor: Editor): BubbleMenuItem[] => {
   const types: BubbleImageOrVideoSizeType[] = ['size-small', 'size-medium', 'size-large']
   const icons: NonNullable<ButtonViewReturn['componentProps']['icon']>[] = ['SizeS', 'SizeM', 'SizeL']
@@ -99,22 +120,7 @@ const videoSizeMenus = (editor: Editor): BubbleMenuItem[] => {
 export const defaultBubbleList = (editor: Editor): BubbleMenuItem[] => [
   ...imageSizeMenus(editor),
   ...videoSizeMenus(editor),
-  {
-    type: 'image-aspect-ratio',
-    component: ActionButton,
-    componentProps: {
-      tooltip: 'editor.image.dialog.form.aspectRatio',
-      icon: 'AspectRatio',
-      action: () => {
-        const isLock = editor.isActive('image', { lockAspectRatio: true })
-        editor.commands.updateImage({
-          lockAspectRatio: !isLock,
-          height: isLock ? undefined : null,
-        })
-      },
-      isActive: () => editor.isActive('image', { lockAspectRatio: true }),
-    },
-  },
+  ...imageAlignMenus(editor),
   {
     type: 'remove',
     component: ActionButton,

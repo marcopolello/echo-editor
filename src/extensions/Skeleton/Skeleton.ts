@@ -5,6 +5,8 @@ import ArticleBlock from './components/ArticleBlock.vue'
 import SkeletonActionButton from './components/SkeletonActionButton.vue'
 import { DEFAULT_SKELETONS_LIST } from '@/constants'
 
+let skeletons = [1,2,3];
+
 export const Skeleton = Extension.create({
   name: 'skeleton',
   addOptions() {
@@ -12,7 +14,7 @@ export const Skeleton = Extension.create({
       ...this.parent?.(),
       //types: ['textStyle'],
       //fontSizes: [...DEFAULT_FONT_SIZE_LIST],
-      skeletons: [...DEFAULT_SKELETONS_LIST],
+      skeletons: [...skeletons],
       button({ editor, extension, t }) {
         const skeletons = extension.options?.skeletons || [];
         const items: Item[] = [...skeletons].map(k => ({

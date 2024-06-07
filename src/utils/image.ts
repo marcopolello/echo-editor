@@ -1,6 +1,5 @@
 import type { Editor, JSONContent } from '@tiptap/core'
 
-// https://github.com/ueberdosis/tiptap/blob/6cbc2d423391c950558721510c1b4c8614feb534/packages/extension-image/src/image.ts#L48-L58
 export type ImageNodeAttributes = {
   /** The URL at which this image can be served. Used as <img> `src`. */
   src: string

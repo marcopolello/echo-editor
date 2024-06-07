@@ -11,7 +11,8 @@ const selectedGroupIndex = ref(0)
 const scrollContainer = ref<HTMLDivElement | null>(null)
 
 const { t } = useLocale()
-const activeItemRef = ref<VNodeRef | null>(null)
+
+const activeItemRefs = ref<(HTMLButtonElement | null)[]>([])
 const props = withDefaults(defineProps<MenuListProps>(), {
   items: undefined,
   command: undefined,
@@ -21,13 +22,15 @@ defineExpose({ onKeyDown })
 
 watch([() => selectedCommandIndex.value, () => selectedGroupIndex.value], async () => {
   if (!scrollContainer.value) return
-  await nextTick() // Aspettare DOM Aggiornamento completato
+  await nextTick() // In attesa del completamento dell'aggiornamento DOM
+  const activeItemIndex = selectedGroupIndex.value * 1000 + selectedCommandIndex.value
   // Prendi l'elemento DOM attualmente selezionato
-  const activeItem = activeItemRef.value?.[0]
+  const activeItem = activeItemRefs.value[activeItemIndex]
   if (activeItem) {
-    const offsetTop = activeItem.offsetTop
-    const offsetHeight = activeItem.offsetHeight
-    scrollContainer.value.scrollTop = offsetTop - offsetHeight
+    activeItem.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+    })
   }
 })
 
@@ -106,6 +109,9 @@ function selectItem(groupIndex: number, commandIndex: number) {
 function createCommandClickHandler(groupIndex: number, commandIndex: number) {
   selectItem(groupIndex, commandIndex)
 }
+function setActiveItemRef(groupIndex: number, commandIndex: number, el: any) {
+  activeItemRefs.value[groupIndex * 1000 + commandIndex] = el
+}
 </script>
 <template>
   <div
@@ -126,7 +132,7 @@ function createCommandClickHandler(groupIndex: number, commandIndex: number) {
               ? 'bg-accent text-neutral-800 dark:bg-neutral-900 dark:text-neutral-200'
               : 'hover:bg-accent hover:text-neutral-800 dark:hover:bg-neutral-900 dark:hover:text-neutral-200',
           ]"
-          :ref="selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex ? 'activeItemRef' : ''"
+          :ref="el => setActiveItemRef(groupIndex, commandIndex, el)"
           v-for="(command, commandIndex) in group.commands"
           :key="commandIndex"
           @click="createCommandClickHandler(groupIndex, commandIndex)"

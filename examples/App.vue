@@ -33,7 +33,6 @@
       {{ content }}
     </div>
   </div>
-  <div class="flex items-center gap-1 fixed bottom-6 right-6 z-[99999] p-1">1 adslakda23</div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
@@ -120,12 +119,12 @@ const extensions = [
   Link,
   Image,
   ImageUpload.configure({
-    upload: (files: File[]) => {
-      const f = files.map(file => ({
-        src: URL.createObjectURL(file),
-        alt: file.name,
-      }))
-      return Promise.resolve(f)
+    upload: (files: File) => {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(URL.createObjectURL(files))
+        }, 3000)
+      })
     },
   }),
   Video,
