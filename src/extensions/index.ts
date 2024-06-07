@@ -102,4 +102,6 @@ export { VideoUpload } from './VideoUpload'
 
 export { Skeleton } from './Skeleton'
 
+export { ExportPdf } from './Export'
+
 //export { Layout } from './Layout'

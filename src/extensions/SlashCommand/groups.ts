@@ -173,6 +173,8 @@ export function renderGroups(editor: Editor) {
           label: t.value('editor.export.pdf'),
           iconName: 'ExportPdf',
           description: 'Export in pdf format',
+          aliases: ['exportPdf', 'export', 'pdf'],
+          shouldBeHidden: editor => editor.isActive('exportPdf'),
           action: ({ editor, range }) => {
             editor
               .chain()

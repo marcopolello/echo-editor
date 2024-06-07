@@ -1,8 +1,9 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import axios from 'axios';
+import { jsPDF } from 'jspdf';  // Importa la libreria jsPDF
 import type { Editor } from 'grapesjs';
 import Modal from './components/Modal.vue';
-//import { xml } from '$lib/stores/xml';
+// import { xml } from '$lib/stores/xml';
 import { xml2json } from 'xml-js';
 
 export let editorInstance: Editor;
@@ -24,10 +25,13 @@ export const ExportPdf = Node.create({
   isolating: true,
   addCommands() {
     return {
-        exportPdf: () => ({ commands }) => {
-        return commands.setNode('exportPdf', { position: 'left' })
+      exportPdf: () => ({ editor }) => {
+        const doc = new jsPDF();
+        const content = editor.getHTML();  // Ottieni il contenuto dell'editor in formato HTML
+        doc.text(content, 10, 10);  // Aggiungi il contenuto HTML al PDF
+        doc.save('editor-content.pdf');  // Salva il PDF con un nome di file
+        return true;
       }
     }
   },
-
 })

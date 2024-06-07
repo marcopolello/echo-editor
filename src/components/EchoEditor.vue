@@ -80,6 +80,8 @@ const sortExtensions = computed<AnyExtension[]>(() => {
   return [...exts, ...diff].map((k, i) => k.configure({ sort: i }))
 })
 
+console.log(sortExtensions);
+
 const editor = new Editor({
   content: props.modelValue,
   editorProps: {
@@ -185,9 +187,9 @@ defineExpose({ editor })
         class="flex flex-col w-full max-h-full"
         :class="[isFullscreen && 'fixed bg-background inset-0 z-[200] w-full h-full m-0 rounded-none']"
       >
-        <Toolbar v-if="!hideToolbar" :editor="editor" class="border-b py-2 px-1" />
+        <Toolbar v-if="!hideToolbar" :editor="editor" class="px-1 py-2 border-b" />
         <editor-content :editor="editor" :class="contentClass" :style="contentDynamicStyles" />
-        <div class="flex justify-between border-t p-3 items-center">
+        <div class="flex items-center justify-between p-3 border-t">
           <div v-if="hasExtension(editor, 'characterCount')" class="flex flex-col">
             <div class="flex justify-end gap-3 text-sm">
               <template v-if="hasExtension(editor, 'characterCount')">

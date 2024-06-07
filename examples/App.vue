@@ -72,6 +72,7 @@ import {
   VideoUpload,
   Code,
   Skeleton,
+  ExportPdf
   //Layout
 } from 'echo-editor'
 import OpenAI from 'openai'
@@ -154,6 +155,7 @@ const extensions = [
     },
   }),
   Skeleton,
+  ExportPdf,
   //Layout
   //AI.configure({
   //  completions: text => AICompletions(text),

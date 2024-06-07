@@ -116,6 +116,7 @@
     "clsx": "^2.1.1",
     "echo-drag-handle-plugin": "^0.0.2",
     "grapesjs": "^0.21.10",
+    "jspdf": "^2.5.1",
     "lucide-vue-next": "^0.378.0",
     "tippy.js": "^6.3.7",
     "vee-validate": "^4.13.0",
