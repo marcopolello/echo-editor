@@ -21,6 +21,32 @@ declare module '@tiptap/core' {
   }
 }
 
+function htmlToPlainText(html: string): string {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+  const body = doc.body;
+
+  function recursiveTextExtraction(node: HTMLElement): string {
+    let text = '';
+
+    for (const child of Array.from(node.childNodes)) {
+      if (child.nodeType === globalThis.Node.TEXT_NODE) {
+        text += child.textContent;
+      } else if (child.nodeType === globalThis.Node.ELEMENT_NODE) {
+        text += recursiveTextExtraction(child as HTMLElement);
+      }
+      // Add line breaks for block elements
+      if (child.nodeName === 'BR' || child.nodeName === 'P' || child.nodeName === 'DIV') {
+        text += '\n';
+      }
+    }
+
+    return text;
+  }
+
+  return recursiveTextExtraction(body).replace(/\n\s*\n/g, '\n'); // Remove multiple consecutive newlines
+}
+
 export const ExportPdf = Node.create({
   name: 'exportPdf',
   content: 'block+',
@@ -28,25 +54,18 @@ export const ExportPdf = Node.create({
   addCommands() {
     return {
       exportPdf: () => ({ editor }) => {
-        // Ottieni il contenuto HTML dell'editor
         const contentHtml = editor.getHTML();
-
-        // Usa DOMParser per convertire l'HTML in testo semplice
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(contentHtml, 'text/html');
-        const contentText = doc.body.textContent || '';
+        const contentText = htmlToPlainText(contentHtml);
 
         const pdf = new jsPDF();
         const margin = 10;
         const maxLineWidth = pdf.internal.pageSize.width - 2 * margin;
         const lines = pdf.splitTextToSize(contentText, maxLineWidth);
 
-        // Aggiungi il contenuto al PDF, gestendo le righe
         lines.forEach((line, index) => {
           pdf.text(line, margin, margin + index * 10);
         });
 
-        // Salva il PDF
         pdf.save('editor-content.pdf');
         return true;
       }
