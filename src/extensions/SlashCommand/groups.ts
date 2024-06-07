@@ -168,6 +168,20 @@ export function renderGroups(editor: Editor) {
               .run()
           },
         },
+        {
+          name: 'exportPdf',
+          label: t.value('editor.export.pdf'),
+          iconName: 'ExportPdf',
+          description: 'Export in pdf format',
+          action: ({ editor, range }) => {
+            editor
+              .chain()
+              .deleteRange(range)
+              .exportPdf()
+              .focus(editor.state.selection.head - 1)
+              .run()
+          },
+        },
       ],
     },
   ]

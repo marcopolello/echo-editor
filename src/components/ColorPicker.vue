@@ -16,7 +16,7 @@ interface Emits {
   (event: 'update:modelValue', color: string | undefined): void
   (event: 'change', color: string | undefined): void
 }
-// 将颜色值转换成数组
+// Converti il ​​valore del colore in un array
 const colorsArray = COLORS_LIST
 const chunkedColors: any = []
 for (let i = 0; i < colorsArray.length; i += 10) {
@@ -68,11 +68,11 @@ const triggerHtml5Color = () => {
     <PopoverTrigger>
       <slot />
     </PopoverTrigger>
-    <PopoverContent hideWhenDetached class="p-2 w-full h-full" align="start" side="bottom">
+    <PopoverContent hideWhenDetached class="w-full h-full p-2" align="start" side="bottom">
       <div class="flex flex-col">
         <!-- Hightlight -->
         <div
-          class="flex items-center p-1 rd-1 cursor-pointer hover:bg-accent"
+          class="flex items-center p-1 cursor-pointer rd-1 hover:bg-accent"
           v-if="highlight"
           @click="setColor(undefined)"
         >
@@ -83,10 +83,10 @@ const triggerHtml5Color = () => {
               <svg viewBox="0 0 18 18" style="fill: rgba(0, 0, 0, 0.4); display: none">
                 <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span
           ></span>
-          <span class="text-sm ml-1">{{ t('editor.nofill') }}</span>
+          <span class="ml-1 text-sm">{{ t('editor.nofill') }}</span>
         </div>
         <!-- Color -->
-        <div class="flex items-center p-1 rd-1 cursor-pointer hover:bg-accent" @click="setColor(undefined)" v-else>
+        <div class="flex items-center p-1 cursor-pointer rd-1 hover:bg-accent" @click="setColor(undefined)" v-else>
           <span class="w-6 h-6 p-0.5 inline-block rounded-sm border border-transparent cursor-pointer"
             ><span
               :style="{ backgroundColor: DEFAULT_COLOR }"
@@ -95,10 +95,10 @@ const triggerHtml5Color = () => {
                 <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path>
               </svg> </span
           ></span>
-          <span class="text-sm ml-1">{{ t('editor.default') }}</span>
+          <span class="ml-1 text-sm">{{ t('editor.default') }}</span>
         </div>
 
-        <span class="flex p-0 w-full h-auto relative last:pb-2" v-for="(items, index) in chunkedColors" :key="index">
+        <span class="relative flex w-full h-auto p-0 last:pb-2" v-for="(items, index) in chunkedColors" :key="index">
           <span
             class="w-6 h-6 p-0.5 inline-block rounded-sm border border-transparent flex-[0 0 auto] cursor-pointer hover:border-border hover:shadow-sm"
             v-for="(item, index) in items"
@@ -120,8 +120,8 @@ const triggerHtml5Color = () => {
                 <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></span
         ></span>
         <div>
-          <div class="text-sm my-1">{{ t('editor.recent') }}</div>
-          <span class="flex p-0 w-full h-auto relative last:pb-2">
+          <div class="my-1 text-sm">{{ t('editor.recent') }}</div>
+          <span class="relative flex w-full h-auto p-0 last:pb-2">
             <span
               class="w-6 h-6 p-0.5 inline-block rounded-sm border border-transparent flex-[0 0 auto] cursor-pointer hover:border-border hover:shadow-sm"
               v-for="(item, index) in recentColorsStore"

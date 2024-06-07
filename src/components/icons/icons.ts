@@ -71,6 +71,7 @@ export const icons = {
   PanelLeft: 'lucide:panel-left',
   PanelRight: 'lucide:panel-right',
   Columns: 'lucide:columns',
+  ExportPdf: 'foundation:page-export-pdf'
 }
 
 export default icons

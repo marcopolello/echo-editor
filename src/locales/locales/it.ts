@@ -49,6 +49,8 @@ const locale: Record<string, string> = {
   'editor.indent.tooltip': 'indenta',
   'editor.outdent.tooltip': 'outdent',
   'editor.columns.tooltip': 'Colonne',
+  'editor.export.pdf': 'ExportPdf',
+  'editor.export.xml': 'ExportXml',
   'editor.link.tooltip': 'link',
   'editor.link.unlink.tooltip': 'elimina link',
   'editor.link.open.tooltip': 'apri link',

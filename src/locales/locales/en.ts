@@ -55,6 +55,8 @@ const locale: Record<string, string> = {
   'editor.indent.tooltip': 'Indent',
   'editor.outdent.tooltip': 'Outdent',
   'editor.columns.tooltip': 'Columns',
+  'editor.export.pdf': 'ExportPdf',
+  'editor.export.xml': 'ExportXml',
   'editor.link.tooltip': 'Link',
   'editor.link.unlink.tooltip': 'UnLink',
   'editor.link.open.tooltip': 'Open Link',
