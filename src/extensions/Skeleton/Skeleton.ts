@@ -6,7 +6,11 @@ import { DEFAULT_SKELETONS_LIST } from '@/constants'
 
 // src/extensions/Skeleton/Skeleton.ts
 
-let skeletons = [1, 2, 3];
+let skeletons = [
+  {id: "1", title: "skeleton1", content: "content1"}, 
+  {id: "2", title: "skeleton2", content: "content2"}, 
+  {id: "3", title: "skeleton3", content: "content3"}
+];
 
 export const Skeleton = Extension.create({
   name: 'skeleton',
@@ -17,10 +21,10 @@ export const Skeleton = Extension.create({
       button({ editor, extension, t }) {
         const skeletons = extension.options?.skeletons || [];
         const items: Item[] = [...skeletons].map(k => ({
-          title: "skeletons",
+          title: k.title,
           isActive: () => true,
           action: () => {
-            insertCustomHTML(editor, String(k));
+            insertCustomHTML(editor, String(k.title));
           },
           disabled: false,
           divider: false,
@@ -43,7 +47,9 @@ export const Skeleton = Extension.create({
 });
 
 // Definisci la funzione che inserirà l'HTML personalizato
-function insertCustomHTML(editor, skeletonId) {
-  const customHTML = '<div class="custom-html">Custom HTML Content for Skeleton ' + skeletonId + '</div>';
+function insertCustomHTML(editor, skeletonTitle) {
+  //CUSTOM HTML PRESO DA DB O CHIAMATA AXIOS
+  //TODO
+  const customHTML = '<div class="custom-html">Custom HTML Content for Skeleton: ' + skeletonTitle + '</div>';
   editor.chain().focus().insertContent(customHTML).run();
 }
