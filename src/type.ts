@@ -1,6 +1,7 @@
 import type { Editor as CoreEditor, Extension, JSONContent } from '@tiptap/core'
 import type { Editor } from '@tiptap/vue-3'
 import { icons } from '@/components/icons'
+import { StyleValue } from 'vue'
 export type { Editor, JSONContent } from '@tiptap/core'
 
 /**
